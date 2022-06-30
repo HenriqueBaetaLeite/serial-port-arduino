@@ -1,0 +1,12 @@
+{
+  "name": "arduinoserialport",
+  "version": "1.0.0",
+  "description": "Connect an arduino to nodejs, using Serial Port",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["arduino", "serialport", "nodejs"],
+  "author": "Henrique Baêta",
+  "license": "ISC"
+}
