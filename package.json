@@ -6,7 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["arduino", "serialport", "nodejs"],
+  "keywords": [
+    "arduino",
+    "serialport",
+    "nodejs"
+  ],
   "author": "Henrique Baêta",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "serialport": "^10.4.0"
+  }
 }
