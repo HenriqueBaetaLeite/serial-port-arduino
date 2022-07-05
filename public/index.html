@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arduino Serial Port</title>
+  </head>
+  <body>
+    <h2>Arduino nodeJS</h2>
+    <p>Temperatura:</p>
+    <p id="temp"></p>
+    <canvas id="myChart" width="150" height="150"></canvas>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
+    <script>
+      const socket = io("http://localhost:3000");
+
+      const temp = document.getElementById("temp");
+
+      let counter = 0;
+
+      socket.on("ioArduino", (data) => {
+        temp.innerText = data + "˚C";
+
+        counter++;
+        myChart.data.labels.push(counter);
+
+        myChart.data.datasets.forEach((dataset) => {
+          dataset.data.push(data);
+
+          myChart.update();
+        });
+      });
+
+      const ctx = document.getElementById("myChart").getContext("2d");
+      const myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: ["Serial Arduino"],
+          datasets: [
+            {
+              label: "Temperatura ˚C",
+              backgroundColor: "rgb(52, 73, 94)",
+              borderColor: "rgb(41, 128, 185)",
+              data: [],
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

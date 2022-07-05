@@ -1,4 +1,8 @@
-const { SerialPort, ReadlineParser, ReadyParser } = require("serialport");
+const { SerialPort, ReadlineParser } = require("serialport");
+const express = require("express");
+const { createServer } = require("http");
+const { Server } = require("socket.io");
+const path = require("path");
 
 const port = new SerialPort(
   { path: "/dev/cu.usbmodem12301", baudRate: 9600 },
@@ -7,17 +11,29 @@ const port = new SerialPort(
   }
 );
 
-const express = require('express');
+const parser = new ReadlineParser({ delimiter: "\r\n" });
+port.pipe(parser);
 
 const app = express();
+const httpServer = createServer(app);
+const io = new Server(httpServer);
 
-app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
 
-app.listen(3000, () => console.log("O pai ta on..."));
+app.get("/", (_req, res) => {
+  res.sendFile("index.html");
+});
 
-const parser = new ReadlineParser({ delimiter: "\r\n" });
+io.on("connection", (socket) => {
+  console.log("Client socket connected:", socket.id);
 
-port.pipe(parser);
+  parser.on("data", (data) => {
+    console.log(data);
+    socket.emit("ioArduino", data);
+  });
+});
+
+httpServer.listen(3000, () => console.log("O pai ta on..."));
 
 // port.write("main screen turn on", (err) => {
 //   if (err) {
@@ -26,24 +42,8 @@ port.pipe(parser);
 //   console.log("Message written");
 // });
 
-// port.on("open", () => {
-//   console.log("Connected...");
-
-//   parser.on("data", (data) => {
-//     console.log(data);
-//   });
-// });
-
-// port.on("readable", () => {
-//   console.log(port.read());
-// });
-
 // port.on("data", function (data) {
 //   parser.on("data", (data) => {
 //     console.log(data);
 //   });
 // });
-
-parser.on("data", (data) => {
-  console.log(data);
-});
