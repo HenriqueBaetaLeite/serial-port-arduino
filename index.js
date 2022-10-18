@@ -16,15 +16,13 @@ port.pipe(parser);
 
 const app = express();
 const httpServer = createServer(app);
-const io = new Server(httpServer);
+const socket = new Server(httpServer);
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", (_req, res) => {
-  res.sendFile("index.html");
-});
+app.get("/", (_req, res) => res.sendFile("index.html"));
 
-io.on("connection", (socket) => {
+socket.on("connection", (socket) => {
   console.log("Client socket connected:", socket.id);
 
   parser.on("data", (data) => {
