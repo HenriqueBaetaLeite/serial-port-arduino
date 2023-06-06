@@ -5,9 +5,9 @@ const { Server } = require("socket.io");
 const path = require("path");
 
 const port = new SerialPort(
-  { path: "/dev/cu.usbmodem12301", baudRate: 9600 },
+  { path: "/dev/cu.usbmodem12401", baudRate: 9600 },
   (err) => {
-    if (err) return console.log("Error:", err.message);
+    if (err) return console.error(err.message);
   }
 );
 
@@ -20,13 +20,13 @@ const socket = new Server(httpServer);
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", (_req, res) => res.sendFile("index.html"));
+// app.get("/", (_req, res) => res.sendFile("index.html"));
 
 socket.on("connection", (socket) => {
   console.log("Client socket connected:", socket.id);
 
   parser.on("data", (data) => {
-    console.log(data);
+    // console.log(data);
     socket.emit("ioArduino", data);
   });
 });

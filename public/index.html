@@ -9,66 +9,16 @@
   <body>
     <h2>Arduino nodeJS</h2>
     <p>Temperatura atual:</p>
-    <p id="temp"></p>
+    <p id="temperature"></p>
     <p>Média:</p>
-    <p id="media"></p>
-    <canvas id="myChart" width="150" height="150"></canvas>
+    <p id="average"></p>
+
+    <div class="chart-container" style="position: relative; height: 30vh">
+      <canvas id="myChart"></canvas>
+    </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
-    <script>
-      const socket = io("http://localhost:3000");
-
-      const temp = document.getElementById("temp");
-
-      const media = document.getElementById("media");
-
-      const dataMedia = [];
-
-      socket.on("ioArduino", (data) => {
-        temp.innerText = data + "˚C";
-
-        dataMedia.push(+data);
-
-        console.log(dataMedia);
-
-        let mediaTemp = (dataMedia.reduce((el, tot) => el + tot, 0) / dataMedia.length).toFixed(2);
-
-        media.innerHTML = mediaTemp + "˚C";
-
-        const date = new Date().toLocaleTimeString();
-
-        myChart.data.labels.push(date);
-
-        myChart.data.datasets.forEach((dataset) => {
-          dataset.data.push(data);
-
-          myChart.update();
-        });
-      });
-
-      const ctx = document.getElementById("myChart").getContext("2d");
-      const myChart = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: ["Serial Arduino"],
-          datasets: [
-            {
-              label: "Temperatura ˚C",
-              backgroundColor: "rgb(52, 73, 94)",
-              borderColor: "rgb(41, 128, 185)",
-              data: [],
-            },
-          ],
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true,
-            },
-          },
-        },
-      });
-    </script>
+    <script type="module" src="./script.js"></script>
   </body>
 </html>
