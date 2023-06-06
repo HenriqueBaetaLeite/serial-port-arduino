@@ -1,7 +1,7 @@
 {
   "name": "arduinoserialport",
   "version": "1.0.0",
-  "description": "Connect an arduino to nodejs, using Serial Port",
+  "description": "Reporting temperature with DHT11 sensor connected to an arduino, through Serial Port connect to a server with nodejs and express",
   "main": "index.js",
   "scripts": {
     "start": "node .",
@@ -10,7 +10,10 @@
   "keywords": [
     "arduino",
     "serialport",
-    "nodejs"
+    "nodejs",
+    "socket.io",
+    "express",
+    "chartjs"
   ],
   "author": "Henrique Baêta",
   "license": "MIT",
