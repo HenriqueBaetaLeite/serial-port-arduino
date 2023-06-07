@@ -10,3 +10,6 @@ https://serialport.io/
 https://www.chartjs.org/docs/latest/samples/line/segments.html
 
 https://www.youtube.com/watch?v=EzLKYBT3FlE
+
+#### cores:
+https://materialui.co/colors/

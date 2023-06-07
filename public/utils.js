@@ -1,6 +1,10 @@
 const setColorLineDown = (ctx, color) =>
   ctx.p0.parsed.y > ctx.p1.parsed.y ? color : undefined;
 
+const deepOrange = "rgb(255, 87, 34)";
+const blue = "rgb(33, 150, 243)";
+const lightGreen = "rgb(197, 225, 165)";
+
 const setColorLineUp = (ctx, color) =>
   ctx.p0.parsed.y < ctx.p1.parsed.y ? color : undefined;
 
@@ -20,9 +24,9 @@ const datasets = [
     tension: 0.5,
     segment: {
       borderColor: (ctx) =>
-        setColorLineDown(ctx, "rgb(192, 57, 43)") ||
-        setColorLineUp(ctx, "rgb(25, 255, 175)") ||
-        setColorLineEqual(ctx, "rgb(155, 155, 155)"),
+        setColorLineDown(ctx, blue) ||
+        setColorLineUp(ctx, deepOrange) ||
+        setColorLineEqual(ctx, lightGreen),
     },
   },
 ];
@@ -49,7 +53,7 @@ const config = {
   options,
 };
 
-const averageTemperature = (dataTemperature) =>
+const calculateTemperatureAverage = (dataTemperature) =>
   (
     dataTemperature.reduce((element, total) => element + total, 0) /
     dataTemperature.length
@@ -57,5 +61,5 @@ const averageTemperature = (dataTemperature) =>
 
 export default {
   config,
-  averageTemperature,
+  calculateTemperatureAverage,
 };

@@ -1,23 +1,28 @@
 import utils from "./utils.js";
 
+const { calculateTemperatureAverage, config } = utils;
+
 const socket = io("http://localhost:3000");
 
-const temperature = document.getElementById("temperature");
+const temperatureParagraph = document.getElementById("temperature");
 
-const average = document.getElementById("average");
+const averageParagraph = document.getElementById("average");
 
-const averageData = [];
+const averageTemperatureArray = [];
 
 const ctx = document.getElementById("myChart").getContext("2d");
 
-const myChart = new Chart(ctx, utils.config);
+const myChart = new Chart(ctx, config);
+
+const numberOfTemperatureRegister = 30;
 
 socket.on("ioArduino", (dataSocket) => {
-  temperature.innerText = dataSocket + "˚C";
+  temperatureParagraph.innerText = dataSocket + "˚C";
 
-  averageData.push(+dataSocket);
+  averageTemperatureArray.push(+dataSocket);
 
-  average.innerHTML = utils.averageTemperature(averageData) + "˚C";
+  averageParagraph.innerHTML =
+    calculateTemperatureAverage(averageTemperatureArray) + "˚C";
 
   const actualTime = new Date().toLocaleTimeString();
 
@@ -25,7 +30,7 @@ socket.on("ioArduino", (dataSocket) => {
 
   myChart.data.datasets.forEach((dataset) => {
     dataset.data.push(dataSocket);
-    if (dataset.data.length >= 20) {
+    if (dataset.data.length >= numberOfTemperatureRegister) {
       myChart.data.labels.shift();
       dataset.data.shift();
     }
