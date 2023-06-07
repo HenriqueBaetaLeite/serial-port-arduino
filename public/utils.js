@@ -1,8 +1,11 @@
-const colorDown = (ctx, color) =>
+const setColorLineDown = (ctx, color) =>
   ctx.p0.parsed.y > ctx.p1.parsed.y ? color : undefined;
 
-const colorUp = (ctx, color) =>
+const setColorLineUp = (ctx, color) =>
   ctx.p0.parsed.y < ctx.p1.parsed.y ? color : undefined;
+
+const setColorLineEqual = (ctx, color) =>
+  ctx.p0.parsed.y === ctx.p1.parsed.y ? color : undefined;
 
 const datasets = [
   {
@@ -17,8 +20,9 @@ const datasets = [
     tension: 0.5,
     segment: {
       borderColor: (ctx) =>
-        colorDown(ctx, "rgb(192, 57, 43)") ||
-        colorUp(ctx, "rgb(255, 255, 175)"),
+        setColorLineDown(ctx, "rgb(192, 57, 43)") ||
+        setColorLineUp(ctx, "rgb(25, 255, 175)") ||
+        setColorLineEqual(ctx, "rgb(155, 155, 155)"),
     },
   },
 ];
