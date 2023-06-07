@@ -1,4 +1,6 @@
-#Serial port with arduino
+# Serial port with arduino
+
+Esse projeto nasceu da ideia de compartilhar meus feitos. Criei um programa em Arduino utilizando um sensor DHT11 de temperatura e umidade, onde transmito através da porta serial e usando a biblioteca serialPort recebo os dados em um servidor NodeJS. O servidor recebe os dados e usando a biblioteca socket.io envia para o cliente, que por sua vez, utiliza a biblioteca chart.js para plotar os dados em um gráfico.
 
 
 ### fontes:
