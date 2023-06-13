@@ -1,15 +1,15 @@
 const setColorLineDown = (ctx, color) =>
   ctx.p0.parsed.y > ctx.p1.parsed.y ? color : undefined;
 
-const deepOrange = "rgb(255, 87, 34)";
-const blue = "rgb(33, 150, 243)";
-const lightGreen = "rgb(197, 225, 165)";
-
 const setColorLineUp = (ctx, color) =>
   ctx.p0.parsed.y < ctx.p1.parsed.y ? color : undefined;
 
 const setColorLineEqual = (ctx, color) =>
   ctx.p0.parsed.y === ctx.p1.parsed.y ? color : undefined;
+
+const deepOrange = "rgb(255, 171, 145)";
+const blue = "rgb(33, 150, 243)";
+const lightGreen = "rgb(197, 225, 165)";
 
 const datasets = [
   {
@@ -37,6 +37,15 @@ const data = {
 };
 
 const options = {
+  // scales: {
+  //   y: {
+  //     max: 50,
+  //     min: -5,
+  //     ticks: {
+  //       stepSize: 0.1,
+  //     },
+  //   },
+  // },
   responsive: true,
   plugins: {
     legend: {
