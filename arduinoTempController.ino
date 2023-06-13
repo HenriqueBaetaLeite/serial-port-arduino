@@ -19,10 +19,9 @@ void setup() {
 
 void loop() {
   if (timerTemperature.repeat()) {
-    Serial.println(String(dht.readTemperature()));
+    float temp = dht.readTemperature();
+    float hum = dht.readHumidity();
+    String separator = "|";
+    Serial.println(temp + separator + hum);
   }
-  //  Serial.println(String(dht.readTemperature()));
-  //  delay(60000);
-  //  Serial.println(String(dht.readHumidity()));
-  //  delay(5000);
 }

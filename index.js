@@ -1,33 +1,23 @@
-const { SerialPort, ReadlineParser } = require("serialport");
 const express = require("express");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 const path = require("path");
-
-const port = new SerialPort(
-  { path: "/dev/cu.usbmodem12401", baudRate: 9600 },
-  (err) => {
-    if (err) return console.error(err.message);
-  }
-);
-
-const parser = new ReadlineParser({ delimiter: "\r\n" });
-port.pipe(parser);
+const parser = require('./serialPortConfig');
 
 const app = express();
 const httpServer = createServer(app);
-const socket = new Server(httpServer);
+const io = new Server(httpServer);
 
 app.use(express.static(path.join(__dirname, "public")));
 
-socket.on("connection", (socket) => {
+io.on("connection", (socket) => {
   console.log("Client socket connected:", socket.id);
 
   parser.on("data", (data) => {
-    socket.emit("ioArduino", data);
+    const [temperature, humidity] = data.split('|');
+    
+    socket.emit("ioArduino", temperature);
   });
 });
 
 httpServer.listen(3000, () => console.log("O pai ta on..."));
-
-// (SerialPort.list().then(data => console.log(data)))
