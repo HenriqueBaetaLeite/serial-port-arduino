@@ -8,10 +8,22 @@
   </head>
   <body>
     <h2>Arduino nodeJS</h2>
-    <p>Temperatura atual:</p>
-    <p id="temperature"></p>
-    <p>Média:</p>
-    <p id="average"></p>
+
+    <div>
+      <div>
+        <p>Temperatura atual:</p>
+        <p id="temperature"></p>
+        <p>Média:</p>
+        <p id="averageTemperature"></p>
+      </div>
+
+      <div>
+        <p>Umidade atual:</p>
+        <p id="humidity"></p>
+        <p>Média:</p>
+        <p id="averageHumidity"></p>
+      </div>
+    </div>
 
     <div class="chart-container" style="position: relative; height: 30vh">
       <canvas id="myChart"></canvas>

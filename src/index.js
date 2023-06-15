@@ -21,13 +21,11 @@ io.on("connection", (socket) => {
   parser.on("data", async (data) => {
     const [temperature, humidity] = data.split("|");
 
-    await temperatureModel.createRegister(temperature);
+    // await temperatureModel.createRegister(temperature);
 
-    const all = await temperatureModel.getAllRegister();
+    // const all = await temperatureModel.getAllRegister();
 
-    console.log(all);
-
-    socket.emit("ioArduino", temperature);
+    socket.emit("ioArduino", temperature, humidity);
   });
 });
 

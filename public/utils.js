@@ -9,7 +9,7 @@ const setColorLineEqual = (ctx, color) =>
 
 const deepOrange = "rgb(255, 171, 145)";
 const blue = "rgb(33, 150, 243)";
-const lightGreen = "rgb(197, 225, 165)";
+// const lightGreen = "rgb(197, 225, 165)";
 
 const datasets = [
   {
@@ -24,9 +24,8 @@ const datasets = [
     tension: 0.5,
     segment: {
       borderColor: (ctx) =>
-        setColorLineDown(ctx, blue) ||
-        setColorLineUp(ctx, deepOrange) ||
-        setColorLineEqual(ctx, lightGreen),
+        setColorLineDown(ctx, blue) || setColorLineUp(ctx, deepOrange),
+      borderDash: (ctx) => setColorLineEqual(ctx, [6, 6]),
     },
   },
 ];
@@ -62,13 +61,12 @@ const config = {
   options,
 };
 
-const calculateTemperatureAverage = (dataTemperature) =>
-  (
-    dataTemperature.reduce((element, total) => element + total, 0) /
-    dataTemperature.length
-  ).toFixed(2);
+const calculateAverage = (data) =>
+  (data.reduce((element, total) => element + total, 0) / data.length).toFixed(
+    2
+  );
 
 export default {
   config,
-  calculateTemperatureAverage,
+  calculateAverage,
 };

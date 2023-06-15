@@ -14,5 +14,3 @@ const result = async () => {
   const [data] = await connection.execute("SELECT * FROM temperature");
   return data;
 };
-
-result().then(data => console.log(data))

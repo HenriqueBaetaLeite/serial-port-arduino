@@ -1,14 +1,18 @@
 import utils from "./utils.js";
 
-const { calculateTemperatureAverage, config } = utils;
+const { calculateAverage, config } = utils;
 
 const socket = io("http://localhost:3003");
 
 const temperatureParagraph = document.getElementById("temperature");
+const temperatureAverageParagraph =
+  document.getElementById("averageTemperature");
 
-const averageParagraph = document.getElementById("average");
+const humidityParagraph = document.getElementById("humidity");
+const humidityAverageParagraph = document.getElementById("averageHumidity");
 
 const averageTemperatureArray = [];
+const averageHumidityArray = [];
 
 const ctx = document.getElementById("myChart").getContext("2d");
 
@@ -16,20 +20,26 @@ const myChart = new Chart(ctx, config);
 
 const numberOfTemperatureRegister = 30;
 
-socket.on("ioArduino", (dataSocket) => {
-  temperatureParagraph.innerText = dataSocket + "˚C";
+socket.on("ioArduino", (temperature, humidity) => {
+  temperatureParagraph.innerText = temperature + "˚C";
 
-  averageTemperatureArray.push(+dataSocket);
+  humidityParagraph.innerText = humidity + "%";
 
-  averageParagraph.innerHTML =
-    calculateTemperatureAverage(averageTemperatureArray) + "˚C";
+  averageTemperatureArray.push(+temperature);
+  averageHumidityArray.push(+humidity);
+
+  temperatureAverageParagraph.innerHTML =
+    calculateAverage(averageTemperatureArray) + "˚C";
+
+  humidityAverageParagraph.innerText =
+    calculateAverage(averageHumidityArray) + "%";
 
   const actualTime = new Date().toLocaleTimeString();
 
   myChart.data.labels.push(actualTime);
 
   myChart.data.datasets.forEach((dataset) => {
-    dataset.data.push(dataSocket);
+    dataset.data.push(temperature);
     if (dataset.data.length >= numberOfTemperatureRegister) {
       myChart.data.labels.shift();
       dataset.data.shift();
