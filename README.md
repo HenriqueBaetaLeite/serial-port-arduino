@@ -1,4 +1,4 @@
-![Screenshot](climateApp.png)
+![Screenshot](./public/climateApp.png)
 
 # Serial port with arduino
 

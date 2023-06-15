@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+
+  # node-app:
+  #   image: node:18
+  #   restart: always
+  #   working_dir: /app
+  #   devices:
+  #     - /dev/cu.usbmodem12401:/dev/cu.usbmodem12401
+  #   privileged: true
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - 3003:3003
+  #   tty: true
+  #   stdin_open: true
+  #   volumes:
+  #     - ./:/app
+  #     - /run/udev:/run/udev:ro
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - node-temp-app-network
+
+  db:
+      image: mysql:8.0.23
+      platform: linux/x86_64
+      restart: always
+      env_file:
+        - .env
+      ports:
+        - 3306:3306
+      volumes:
+        - ./app:/var/lib/mysql
+      # networks:
+      #   - node-temp-app-network
+
+# networks:
+#     node-temp-app-network:
+#       driver: bridge

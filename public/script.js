@@ -2,7 +2,7 @@ import utils from "./utils.js";
 
 const { calculateTemperatureAverage, config } = utils;
 
-const socket = io("http://localhost:3000");
+const socket = io("http://localhost:3003");
 
 const temperatureParagraph = document.getElementById("temperature");
 

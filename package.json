@@ -2,7 +2,7 @@
   "name": "arduinoserialport",
   "version": "1.0.0",
   "description": "Reporting temperature with DHT11 sensor connected to an arduino, through Serial Port connect to a server with nodejs and express",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "start": "node .",
     "dev": "nodemon ."
@@ -19,6 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.1",
+    "mysql2": "^3.3.5",
     "serialport": "^10.4.0",
     "socket.io": "^4.5.1"
   },
