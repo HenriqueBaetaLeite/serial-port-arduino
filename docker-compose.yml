@@ -32,7 +32,7 @@ services:
       ports:
         - 3306:3306
       volumes:
-        - ./app:/var/lib/mysql
+        - ./app_volume:/var/lib/mysql
       # networks:
       #   - node-temp-app-network
 
