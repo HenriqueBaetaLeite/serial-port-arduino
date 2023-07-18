@@ -8,8 +8,8 @@ Esse projeto nasceu da ideia de compartilhar meus feitos. Criei um programa em A
 
 A parte de Arduino / Hardware eu deixo pra depois.
 
-Quando o servidor é iniciado, faço a conexão com a porta serial e com o banco de dados. Independente de ter cliente conectado, o servidor recebe os dados do Arduino e salva no banco.
-Quando o cliente se conecta, inicialmente, recebe as informações em tempo real, sem acesso ao banco de dados. No dashboard criado no front-end, teremos opção de ver históricos existentes da temperatura, rotas como todos os registros de clima, média, máxima e mínima.
+Quando o servidor é iniciado, faço a conexão com a porta serial e com o banco de dados (ainda precisa de ajustes). Independente de ter cliente conectado, o servidor recebe os dados do Arduino e salva no banco.
+Quando o cliente se conecta, inicialmente, recebe as informações em tempo real, sem acesso ao banco de dados. No dashboard à ser criado no front-end, teremos opção de ver históricos existentes da temperatura, rotas com todos os registros de clima, média, máxima e mínima.
 
 ### fontes:
 https://www.chartjs.org/docs/latest/
