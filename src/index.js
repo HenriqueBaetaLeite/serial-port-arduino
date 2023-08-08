@@ -4,8 +4,6 @@ const { Server } = require("socket.io");
 const path = require("path");
 const parser = require("./serialPortConfig");
 
-const temperatureModel = require("./database/temperatureModel");
-
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer);
@@ -18,12 +16,8 @@ app.use(express.static(publicPath));
 io.on("connection", (socket) => {
   console.log("Client socket connected:", socket.id);
 
-  parser.on("data", async (data) => {
+  parser.on("data", (data) => {
     const [temperature, humidity] = data.split("|");
-
-    // await temperatureModel.createRegister(temperature);
-
-    // const all = await temperatureModel.getAllRegister();
 
     socket.emit("ioArduino", temperature, humidity);
   });

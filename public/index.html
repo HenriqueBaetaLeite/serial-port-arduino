@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
     <title>Arduino Serial Port</title>
   </head>
   <body>
@@ -25,10 +26,18 @@
       </div>
     </div>
 
-    <div class="chart-container" style="position: relative; height: 30vh">
-      <canvas id="myChart"></canvas>
-    </div>
+    <div class="box charts">
 
+      
+      <div class="chartCard" style="position: relative; height: 30vh">
+        <canvas id="myChartTemperature"></canvas>
+      </div>
+
+      <!-- <div class="chartCard" style="height: 30vh">
+        <canvas id="myChartHumidity"></canvas>
+      </div> -->
+      
+    </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
     <script type="module" src="./script.js"></script>

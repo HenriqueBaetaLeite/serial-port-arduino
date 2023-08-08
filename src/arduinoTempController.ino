@@ -1,9 +1,8 @@
 #include <DHT.h>
 #include <neotimer.h>
 
-const int dht_pino = 53;
+const int dht_pino = 8;
 
-//#define DHT_TYPE DHT11
 const int DHT_TYPE = DHT11;
 
 long oneMinute = 60000;

@@ -1,6 +1,6 @@
 import utils from "./utils.js";
 
-const { calculateAverage, config } = utils;
+const { calculateAverage, config, configHumidity } = utils;
 
 const socket = io("http://localhost:3003");
 
@@ -14,10 +14,9 @@ const humidityAverageParagraph = document.getElementById("averageHumidity");
 const averageTemperatureArray = [];
 const averageHumidityArray = [];
 
-const ctx = document.getElementById("myChart").getContext("2d");
+const ctx = document.getElementById("myChartTemperature").getContext("2d");
 
 const myChart = new Chart(ctx, config);
-
 const numberOfTemperatureRegister = 30;
 
 socket.on("ioArduino", (temperature, humidity) => {
@@ -38,12 +37,17 @@ socket.on("ioArduino", (temperature, humidity) => {
 
   myChart.data.labels.push(actualTime);
 
-  myChart.data.datasets.forEach((dataset) => {
-    dataset.data.push(temperature);
-    if (dataset.data.length >= numberOfTemperatureRegister) {
-      myChart.data.labels.shift();
-      dataset.data.shift();
-    }
-    myChart.update();
-  });
+  myChart.data.datasets[0].data.push(humidity)
+  myChart.data.datasets[1].data.push(temperature)
+  myChart.update();
+
+  // myChart.data.datasets.forEach((dataset) => {
+  //   dataset.data.push(temperature);
+  //   if (dataset.data.length >= numberOfTemperatureRegister) {
+  //     myChart.data.labels.shift();
+  //     dataset.data.shift();
+  //   }
+  //   myChart.update();
+  // });
+
 });

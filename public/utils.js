@@ -9,9 +9,25 @@ const setColorLineEqual = (ctx, color) =>
 
 const deepOrange = "rgb(255, 171, 145)";
 const blue = "rgb(33, 150, 243)";
-// const lightGreen = "rgb(197, 225, 165)";
+const lightGreen = "rgb(197, 225, 165)";
 
 const datasets = [
+  {
+    label: "Umidade em %",
+    backgroundColor: "rgb(152, 173, 194)",
+    borderColor: "rgb(141, 228, 15)",
+    hoverBackgroundColor: "rgb(0,0,0)",
+    pointHoverRadius: 10,
+    pointStyle: "rectRounded",
+    pointRadius: 5,
+    data: [],
+    tension: 0.5,
+    segment: {
+      borderColor: (ctx) =>
+        setColorLineDown(ctx, blue) || setColorLineUp(ctx, lightGreen),
+      borderDash: (ctx) => setColorLineEqual(ctx, [6, 6]),
+    },
+  },
   {
     label: "Temperatura em ˚C",
     backgroundColor: "rgb(52, 73, 94)",
