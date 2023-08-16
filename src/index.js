@@ -9,7 +9,7 @@ const httpServer = createServer(app);
 const io = new Server(httpServer);
 
 const PORT = process.env.PORT || 3003;
-const publicPath = path.join(__dirname, "../", "public");
+const publicPath = path.join(__dirname, "../", "public2");
 
 app.use(express.static(publicPath));
 
@@ -23,4 +23,4 @@ io.on("connection", (socket) => {
   });
 });
 
-httpServer.listen(PORT, () => console.log("O pai ta on..."));
+httpServer.listen(PORT, () => console.log(`O pai ta on... ${PORT}`));
