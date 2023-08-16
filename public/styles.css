@@ -1,3 +1,26 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 .box {
-  /* display: flex; */
+  display: flex;
+}
+
+.frameClimate {
+  width: 400px;
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+}
+
+.temperatureFrame, .humidityFrame {
+  margin-left: 20px;
+  width: 50%;
+  border-radius: 6px;
+  border: 2px black solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

@@ -14,9 +14,12 @@ const humidityAverageParagraph = document.getElementById("averageHumidity");
 const averageTemperatureArray = [];
 const averageHumidityArray = [];
 
-const ctx = document.getElementById("myChartTemperature").getContext("2d");
+// const ctx = document.getElementById("myChartTemperature")//.getContext("2d");
+// const myChart = new Chart(ctx, config);
 
-const myChart = new Chart(ctx, config);
+// const ctx2 = document.getElementById("myChartHumidity");
+// const myChart2 = new Chart(ctx2, config);
+
 const numberOfTemperatureRegister = 30;
 
 socket.on("ioArduino", (temperature, humidity) => {
@@ -35,11 +38,32 @@ socket.on("ioArduino", (temperature, humidity) => {
 
   const actualTime = new Date().toLocaleTimeString();
 
-  myChart.data.labels.push(actualTime);
+  // myChart.data.labels.push(actualTime);
 
-  myChart.data.datasets[0].data.push(humidity)
-  myChart.data.datasets[1].data.push(temperature)
-  myChart.update();
+  // myChart.data.datasets[0].data.push(humidity)
+  // myChart.data.datasets[1].data.push(temperature)
+  
+  // if (myChart.data.datasets[0].data.length >= numberOfTemperatureRegister) {
+  //   myChart.data.labels.shift();
+  //   myChart.data.datasets[0].data.shift();
+  //   myChart.data.datasets[1].data.shift();
+  //   myChart.update();
+  // }
+  // myChart.update();
+
+
+  // myChart2.data.labels.push(actualTime);
+
+  // myChart2.data.datasets[0].data.push(humidity)
+  // myChart2.data.datasets[1].data.push(temperature)
+  
+  // if (myChart2.data.datasets[0].data.length >= numberOfTemperatureRegister) {
+  //   myChart2.data.labels.shift();
+  //   myChart2.data.datasets[0].data.shift();
+  //   myChart2.data.datasets[1].data.shift();
+  //   myChart2.update();
+  // }
+  // myChart2.update();
 
   // myChart.data.datasets.forEach((dataset) => {
   //   dataset.data.push(temperature);
