@@ -147,8 +147,4 @@ $(function () {
 	function theme15() {
       $('body').attr('class', 'bg-theme bg-theme15');
     }
-
-
-
-
 });

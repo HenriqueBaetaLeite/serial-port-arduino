@@ -39,74 +39,7 @@
   <body class="bg-theme bg-theme2">
     <!-- Start wrapper-->
     <!-- <div id="wrapper"> -->
-      <!--Start sidebar-wrapper-->
-      <!-- <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
-     <div class="brand-logo">
-      <a href="index.html">
-       <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
-       <h5 class="logo-text">Dashtreme Admin</h5>
-     </a>
-   </div>
-   <ul class="sidebar-menu do-nicescrol">
-      <li class="sidebar-header">MAIN NAVIGATION</li>
-      <li>
-        <a href="index.html">
-          <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="icons.html">
-          <i class="zmdi zmdi-invert-colors"></i> <span>UI Icons</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="forms.html">
-          <i class="zmdi zmdi-format-list-bulleted"></i> <span>Forms</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="tables.html">
-          <i class="zmdi zmdi-grid"></i> <span>Tables</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="calendar.html">
-          <i class="zmdi zmdi-calendar-check"></i> <span>Calendar</span>
-          <small class="badge float-right badge-light">New</small>
-        </a>
-      </li>
-
-      <li>
-        <a href="profile.html">
-          <i class="zmdi zmdi-face"></i> <span>Profile</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="login.html" target="_blank">
-          <i class="zmdi zmdi-lock"></i> <span>Login</span>
-        </a>
-      </li>
-
-       <li>
-        <a href="register.html" target="_blank">
-          <i class="zmdi zmdi-account-circle"></i> <span>Registration</span>
-        </a>
-      </li>
-
-      <li class="sidebar-header">LABELS</li>
-      <li><a href="javaScript:void();"><i class="zmdi zmdi-coffee text-danger"></i> <span>Important</span></a></li>
-      <li><a href="javaScript:void();"><i class="zmdi zmdi-chart-donut text-success"></i> <span>Warning</span></a></li>
-      <li><a href="javaScript:void();"><i class="zmdi zmdi-share text-info"></i> <span>Information</span></a></li>
-
-    </ul>
-   
-   </div> -->
-      <!--End sidebar-wrapper-->
+     
 
       <!--Start topbar header-->
       <!-- <header class="topbar-nav">
@@ -184,7 +117,7 @@
             <div class="card-content">
               <div class="row row-group m-0">
 
-                <div class="col-12 col-lg-6 col-xl-3 border-light">
+                <div class="col-12 col-lg-6 col-xl-6 border-light">
                   <div class="card-body">
                     <h5 class="text-white mb-0">
                       <span class="float"
@@ -194,7 +127,7 @@
                     <div class="progress my-3" style="height: 3px">
                       <div class="progress-bar bar-temperature" style="width: 80%"></div>
                     </div>
-                    <p class="mb-0 text-white small-font">
+                    <p class="mb-0 text-white">
                       Temperatura Atual<span class="float-right temperature"
                         ><i class="zmdi zmdi-spinner fa-pulse"></i
                       ></span>
@@ -203,7 +136,7 @@
                 </div>
 
 
-                <div class="col-12 col-lg-6 col-xl-3 border-light">
+                <!-- <div class="col-12 col-lg-6 col-xl-3 border-light">
                   <div class="card-body">
                     <h5 class="text-white mb-0">
                       <span class="float"><i class="fa fa-cloud"></i></span>
@@ -213,22 +146,22 @@
                     </div>
                     <p class="mb-0 text-white small-font">
                       Temperatura Média
-                      <span class="float-right" id="averageTemperature"
+                      <span class="float-right" 
                         ><i class="zmdi zmdi-spinner fa-pulse"></i
                       ></span>
                     </p>
                   </div>
-                </div>
+                </div> -->
 
-                <div class="col-12 col-lg-6 col-xl-3 border-light">
+                <div class="col-12 col-lg-6 col-xl-6 border-light">
                   <div class="card-body">
                     <h5 class="text-white mb-0">
-                      <span class="float"><i class="fa fa-shower"></i></span>
+                      <span class="float"><i class="fa fa-tint"></i></span>
                     </h5>
                     <div class="progress my-3" style="height: 3px">
                       <div class="progress-bar bar-humidity" id="bar" style="width: 100%"></div>
                     </div>
-                    <p class="mb-0 text-white small-font">
+                    <p class="mb-0 text-white">
                       Umidade Atual<span class="float-right humidity"
                         ><i class="zmdi zmdi-spinner fa-pulse"></i
                       ></span>
@@ -236,11 +169,11 @@
                   </div>
                 </div>
 
-                <div class="col-12 col-lg-6 col-xl-3 border-light">
+                <!-- <div class="col-12 col-lg-6 col-xl-3 border-light">
                   <div class="card-body">
                     <h5 class="text-white mb-0">
                       <span class="float"
-                        ><i class="fa fa-envira"></i
+                        ><i class="fa fa-sun-o"></i
                       ></span>
                     </h5>
                     <div class="progress my-3" style="height: 3px">
@@ -253,7 +186,8 @@
                       ></span>
                     </p>
                   </div>
-                </div>
+                </div> -->
+
               </div>
             </div>
           </div>
@@ -262,58 +196,64 @@
             <div class="col-12 col-lg-8 col-xl-8">
               <div class="card">
                 <div class="card-header">
-                  Gráfico de Temperatura
+                  Gráfico da Temperatura atual
                   <div class="card-action">
                     <span class="float-right"><i class="fa fa-line-chart"></i></span>
                   </div>
                 </div>
                 <div class="card-body">
-                  <ul class="list-inline">
-                    <li class="list-inline-item">
-                      <i class="fa fa-circle mr-2 text-white"></i>Temperatura
-                    </li>
-                  </ul>
                   <div class="chart-container-1">
                     <canvas id="chart1"></canvas>
                   </div>
                 </div>
 
-                <div
-                  class="row m-0 row-group text-center border-top border-light-3"
-                >
+                <div class="row m-0 row-group text-center border-top border-light-3">
+
                   <div class="col-12 col-lg-4">
                     <div class="p-3">
-                      <h5 class="mb-0">45.87M</h5>
-                      <small class="mb-0"
-                        >Overall Visitor
+                      <h5 class="mb-0 min-temp">
                         <span>
-                          <i class="fa fa-arrow-up"></i> 2.43%</span
-                        ></small
-                      >
+                          <i class="fa fa-spinner fa-pulse"></i>
+                        </span>
+                      </h5>
+                      <small class="mb-0">Temperatura mínima
+                        <span>
+                          <i class="fa fa-arrow-down"></i>
+                        </span>
+                      </small>
                     </div>
                   </div>
+
                   <div class="col-12 col-lg-4">
                     <div class="p-3">
-                      <h5 class="mb-0">15:48</h5>
-                      <small class="mb-0"
-                        >Visitor Duration
+                      <h5 class="mb-0 max-temp">
                         <span>
-                          <i class="fa fa-arrow-up"></i> 12.65%</span
-                        ></small
-                      >
+                          <i class="fa fa-spinner fa-pulse"></i>
+                        </span>
+                      </h5>
+                      <small class="mb-0">Temperatura máxima
+                        <span>
+                          <i class="fa fa-arrow-up"></i>
+                        </span>
+                      </small>
                     </div>
                   </div>
-                  <div class="col-12 col-lg-4">
+
+                    <div class="col-12 col-lg-4">
                     <div class="p-3">
-                      <h5 class="mb-0">245.65</h5>
-                      <small class="mb-0"
-                        >Pages/Visit
+                      <h5 class="mb-0 max-temp" id="averageTemperature">
                         <span>
-                          <i class="fa fa-arrow-up"></i> 5.62%</span
-                        ></small
-                      >
+                          <i class="fa fa-spinner fa-pulse"></i>
+                        </span>
+                      </h5>
+                      <small class="mb-0">Temperatura média
+                        <span>
+                          <i class="fa fa-balance-scale"></i>
+                        </span>
+                      </small>
                     </div>
                   </div>
+                  
                 </div>
               </div>
             </div>
@@ -323,30 +263,6 @@
                 <div class="card-header">
                   Relatório de Umidade
                   <div class="card-action">
-                    <!-- <div class="dropdown">
-                      <a
-                        href="javascript:void();"
-                        class="dropdown-toggle dropdown-toggle-nocaret"
-                        data-toggle="dropdown"
-                      >
-                        <i class="icon-options"></i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="javascript:void();"
-                          >Action</a
-                        >
-                        <a class="dropdown-item" href="javascript:void();"
-                          >Another action</a
-                        >
-                        <a class="dropdown-item" href="javascript:void();"
-                          >Something else here</a
-                        >
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="javascript:void();"
-                          >Separated link</a
-                        >
-                      </div>
-                    </div> -->
                   </div>
                 </div>
                 <div class="card-body">
@@ -394,203 +310,8 @@
           </div>
           <!--End Row-->
 
-          <!-- <div class="row">
-            <div class="col-12 col-lg-12">
-              <div class="card">
-                <div class="card-header">
-                  Recent Order Tables
-                  <div class="card-action">
-                    <div class="dropdown">
-                      <a
-                        href="javascript:void();"
-                        class="dropdown-toggle dropdown-toggle-nocaret"
-                        data-toggle="dropdown"
-                      >
-                        <i class="icon-options"></i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="javascript:void();"
-                          >Action</a
-                        >
-                        <a class="dropdown-item" href="javascript:void();"
-                          >Another action</a
-                        >
-                        <a class="dropdown-item" href="javascript:void();"
-                          >Something else here</a
-                        >
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="javascript:void();"
-                          >Separated link</a
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="table-responsive">
-                  <table
-                    class="table align-items-center table-flush table-borderless"
-                  >
-                    <thead>
-                      <tr>
-                        <th>Product</th>
-                        <th>Photo</th>
-                        <th>Product ID</th>
-                        <th>Amount</th>
-                        <th>Date</th>
-                        <th>Shipping</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Iphone 5</td>
-                        <td>
-                          <img
-                            src="https://via.placeholder.com/110x110"
-                            class="product-img"
-                            alt="product img"
-                          />
-                        </td>
-                        <td>#9405822</td>
-                        <td>$ 1250.00</td>
-                        <td>03 Aug 2017</td>
-                        <td>
-                          <div class="progress shadow" style="height: 3px">
-                            <div
-                              class="progress-bar"
-                              role="progressbar"
-                              style="width: 90%"
-                            ></div>
-                          </div>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>Earphone GL</td>
-                        <td>
-                          <img
-                            src="https://via.placeholder.com/110x110"
-                            class="product-img"
-                            alt="product img"
-                          />
-                        </td>
-                        <td>#9405820</td>
-                        <td>$ 1500.00</td>
-                        <td>03 Aug 2017</td>
-                        <td>
-                          <div class="progress shadow" style="height: 3px">
-                            <div
-                              class="progress-bar"
-                              role="progressbar"
-                              style="width: 60%"
-                            ></div>
-                          </div>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>HD Hand Camera</td>
-                        <td>
-                          <img
-                            src="https://via.placeholder.com/110x110"
-                            class="product-img"
-                            alt="product img"
-                          />
-                        </td>
-                        <td>#9405830</td>
-                        <td>$ 1400.00</td>
-                        <td>03 Aug 2017</td>
-                        <td>
-                          <div class="progress shadow" style="height: 3px">
-                            <div
-                              class="progress-bar"
-                              role="progressbar"
-                              style="width: 70%"
-                            ></div>
-                          </div>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>Clasic Shoes</td>
-                        <td>
-                          <img
-                            src="https://via.placeholder.com/110x110"
-                            class="product-img"
-                            alt="product img"
-                          />
-                        </td>
-                        <td>#9405825</td>
-                        <td>$ 1200.00</td>
-                        <td>03 Aug 2017</td>
-                        <td>
-                          <div class="progress shadow" style="height: 3px">
-                            <div
-                              class="progress-bar"
-                              role="progressbar"
-                              style="width: 100%"
-                            ></div>
-                          </div>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>Hand Watch</td>
-                        <td>
-                          <img
-                            src="https://via.placeholder.com/110x110"
-                            class="product-img"
-                            alt="product img"
-                          />
-                        </td>
-                        <td>#9405840</td>
-                        <td>$ 1800.00</td>
-                        <td>03 Aug 2017</td>
-                        <td>
-                          <div class="progress shadow" style="height: 3px">
-                            <div
-                              class="progress-bar"
-                              role="progressbar"
-                              style="width: 40%"
-                            ></div>
-                          </div>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>Clasic Shoes</td>
-                        <td>
-                          <img
-                            src="https://via.placeholder.com/110x110"
-                            class="product-img"
-                            alt="product img"
-                          />
-                        </td>
-                        <td>#9405825</td>
-                        <td>$ 1200.00</td>
-                        <td>03 Aug 2017</td>
-                        <td>
-                          <div class="progress shadow" style="height: 3px">
-                            <div
-                              class="progress-bar"
-                              role="progressbar"
-                              style="width: 100%"
-                            ></div>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <!--End Row-->
-
           <!--End Dashboard Content-->
 
-          <!--start overlay-->
-          <!-- <div class="overlay toggle-menu"></div> -->
-          <!--end overlay-->
         </div>
         <!-- End container-fluid-->
       </div>
@@ -602,48 +323,13 @@
       <!--End Back To Top Button-->
 
       <!--Start footer-->
-      <footer class="footer">
+      <!-- <footer class="footer">
         <div class="container">
           <div class="text-center">Copyright © 2018 Dashtreme Admin</div>
         </div>
-      </footer>
+      </footer> -->
       <!--End footer-->
-
-      <!--start color switcher-->
-      <!-- <div class="right-sidebar">
-        <div class="switcher-icon">
-          <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
-        </div>
-        <div class="right-sidebar-content">
-          <p class="mb-0">Gaussion Texture</p>
-          <hr />
-
-          <ul class="switcher">
-            <li id="theme1"></li>
-            <li id="theme2"></li>
-            <li id="theme3"></li>
-            <li id="theme4"></li>
-            <li id="theme5"></li>
-            <li id="theme6"></li>
-          </ul>
-
-          <p class="mb-0">Gradient Background</p>
-          <hr />
-
-          <ul class="switcher">
-            <li id="theme7"></li>
-            <li id="theme8"></li>
-            <li id="theme9"></li>
-            <li id="theme10"></li>
-            <li id="theme11"></li>
-            <li id="theme12"></li>
-            <li id="theme13"></li>
-            <li id="theme14"></li>
-            <li id="theme15"></li>
-          </ul>
-        </div>
-      </div> -->
-      <!--end color switcher-->
+     
     </div>
     <!--End wrapper-->
 

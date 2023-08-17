@@ -4,7 +4,3 @@ const calculateAverage = (data) =>
   );
 
   module.exports = { calculateAverage}
-
-// export default {
-//   calculateAverage,
-// };

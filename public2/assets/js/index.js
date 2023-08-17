@@ -1,25 +1,33 @@
-const calculateAverage = (data) =>
-  (data.reduce((element, total) => element + total, 0) / data.length).toFixed(
-    2
-  );
+function calculateAverage(data) {
+  return (
+    data.reduce((element, total) => element + total, 0) / data.length
+  ).toFixed(2);
+}
+
 $(function () {
   "use strict";
 
+  // Temperature config
   const temperatureParagraph =
     document.getElementsByClassName("temperature")[0];
   const temperatureAverageParagraph =
     document.getElementById("averageTemperature");
-
-  const humidityParagraph = document.getElementsByClassName("humidity")[0];
-  const humidityAverageParagraph = document.getElementById("averageHumidity");
-
-  const humidityProgressBar =
-    document.getElementsByClassName("bar-humidity")[0];
   const temperatureProgressBar =
     document.getElementsByClassName("bar-temperature")[0];
-
+  const maxTemperatureParagraph =
+    document.getElementsByClassName("max-temp")[0];
+  const minTemperatureParagraph =
+    document.getElementsByClassName("min-temp")[0];
   const averageTemperatureArray = [];
+
+  // Humidity config
+  const humidityParagraph = document.getElementsByClassName("humidity")[0];
+  const humidityAverageParagraph = document.getElementById("averageHumidity");
+  const humidityProgressBar =
+    document.getElementsByClassName("bar-humidity")[0];
   const averageHumidityArray = [];
+  let maxTemperature = 0;
+  let minTemperature = 40;
 
   const socket = io("http://localhost:3003");
 
@@ -34,12 +42,21 @@ $(function () {
     averageHumidityArray.push(+humidity);
 
     temperatureAverageParagraph.innerHTML =
-      calculateAverage(averageTemperatureArray) + "˚C";
+      (maxTemperature + minTemperature) / 2 + "˚C";
 
-    humidityAverageParagraph.innerText =
-      calculateAverage(averageHumidityArray) + "%";
+    // humidityAverageParagraph.innerText =
+    //   calculateAverage(averageHumidityArray) + "%";
 
-    console.log(averageTemperatureArray);
+    if (temperature > maxTemperature) {
+      maxTemperature = temperature;
+    }
+    if (temperature < minTemperature) {
+      minTemperature = temperature;
+    }
+
+    maxTemperatureParagraph.innerHTML = maxTemperature + "˚C";
+    minTemperatureParagraph.innerHTML = minTemperature + "˚C";
+
     const time = new Date().toLocaleTimeString();
     myChart.data.labels.push(time);
 
@@ -50,8 +67,6 @@ $(function () {
 
     myChart.data.datasets[0].data.push(+temperature);
     myChart.update();
-
-    console.log(myChart.data.datasets[0].data);
   });
 
   var ctx = document.getElementById("chart2").getContext("2d");
@@ -88,11 +103,9 @@ $(function () {
     },
   });
 
-  // chart 1
-
   const deepOrange = "rgb(255, 171, 145)";
   const blue = "rgb(33, 150, 243)";
-	
+
   var ctx = document.getElementById("chart1").getContext("2d");
   var myChart = new Chart(ctx, {
     type: "line",
@@ -101,7 +114,6 @@ $(function () {
       datasets: [
         {
           label: "Temperatura em ˚C",
-          backgroundColor: "rgb(52, 73, 94)",
           borderColor: "rgb(41, 128, 185)",
           hoverBackgroundColor: "rgb(0,0,0)",
           pointHoverRadius: 10,
@@ -118,6 +130,13 @@ $(function () {
       ],
     },
     options: {
+      plugins: {
+        legend: {
+          labels: {
+            usePointStyle: true,
+          },
+        },
+      },
       maintainAspectRatio: false,
       legend: {
         display: false,
@@ -145,8 +164,9 @@ $(function () {
         yAxes: [
           {
             ticks: {
-              beginAtZero: true,
+              // beginAtZero: true,
               fontColor: "#ddd",
+              stepSize: 1,
             },
             gridLines: {
               display: true,
@@ -157,6 +177,4 @@ $(function () {
       },
     },
   });
-
-  // chart 2
 });
