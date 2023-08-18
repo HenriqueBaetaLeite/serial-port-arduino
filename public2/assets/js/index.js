@@ -42,7 +42,7 @@ $(function () {
     averageHumidityArray.push(+humidity);
 
     temperatureAverageParagraph.innerHTML =
-      (maxTemperature + minTemperature) / 2 + "˚C";
+      ((Number(maxTemperature) + Number(minTemperature)) / 2).toFixed(2) + "˚C";
 
     // humidityAverageParagraph.innerText =
     //   calculateAverage(averageHumidityArray) + "%";
