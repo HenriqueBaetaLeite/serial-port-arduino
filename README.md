@@ -1,5 +1,9 @@
 ![Screenshot](./public/climateApp.png)
 
+Estamos trabalhando ...
+
+<iframe src="https://giphy.com/embed/EIiJp9cQ3GeEU" width="100" height="100" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/please-construction-patient-EIiJp9cQ3GeEU">via GIPHY</a></p>
+
 # Serial port with arduino
 
 Esse projeto nasceu da ideia de compartilhar meus feitos. Criei um programa em Arduino utilizando um sensor DHT11 de temperatura e umidade, onde transmito através da porta serial e usando a biblioteca serialPort recebo os dados em um servidor NodeJS. O servidor usando a biblioteca socket.io envia os dados para o cliente, que por sua vez, utiliza a biblioteca chart.js para plotar os dados em um gráfico.
