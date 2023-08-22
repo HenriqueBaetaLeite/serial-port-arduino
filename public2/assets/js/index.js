@@ -33,9 +33,7 @@ $(function () {
     temperatureParagraph.innerText = temperature + "˚C";
     temperatureProgressBar.style.width = temperature + "%";
 
-    for (let index = 0; index < humidityParagraph.length; index++) {
-      const paragraph = humidityParagraph[index];
-
+    for (let paragraph of humidityParagraph) {
       paragraph.innerText = humidity + "%";
     }
 
