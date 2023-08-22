@@ -1,3 +1,8 @@
+import { barChart } from "./utils/barChartConfig.js";
+import { lineChart } from "./utils/lineChartConfig.js";
+
+import { renderTemperatureConfig } from "./utils/temperatureConfig.js";
+
 $(function () {
   "use strict";
 
@@ -30,8 +35,17 @@ $(function () {
   const socket = io("http://localhost:3003");
 
   socket.on("ioArduino", (temperature, humidity) => {
-    temperatureParagraph.innerText = temperature + "˚C";
-    temperatureProgressBar.style.width = temperature + "%";
+    const tempData = { temperature, maxTemperature, minTemperature };
+    const tempElements = {
+      temperatureParagraph,
+      temperatureProgressBar,
+      averageTemperatureArray,
+      temperatureAverageParagraph,
+      maxTemperatureParagraph,
+      minTemperatureParagraph,
+    };
+
+    renderTemperatureConfig(tempData, tempElements);
 
     for (let paragraph of humidityParagraph) {
       paragraph.innerText = humidity + "%";
@@ -39,11 +53,7 @@ $(function () {
 
     humidityProgressBar.style.width = humidity + "%";
 
-    averageTemperatureArray.push(+temperature);
     averageHumidityArray.push(+humidity);
-
-    temperatureAverageParagraph.innerHTML =
-      ((Number(maxTemperature) + Number(minTemperature)) / 2).toFixed(2) + "˚C";
 
     humidityAverageParagraph.innerText =
       ((Number(maxHumidity) + Number(minHumidity)) / 2).toFixed(2) + "%";
@@ -54,16 +64,6 @@ $(function () {
     if (humidity < minHumidity) {
       minHumidity = humidity;
     }
-
-    if (temperature > maxTemperature) {
-      maxTemperature = temperature;
-    }
-    if (temperature < minTemperature) {
-      minTemperature = temperature;
-    }
-
-    maxTemperatureParagraph.innerHTML = maxTemperature + "˚C";
-    minTemperatureParagraph.innerHTML = minTemperature + "˚C";
 
     maxHumidityParagraph.innerHTML = maxHumidity + "%";
     minHumidityParagraph.innerHTML = minHumidity + "%";
@@ -82,111 +82,10 @@ $(function () {
   });
 
   var ctx = document.getElementById("chart2").getContext("2d");
-  var myChart = new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: ["Atual", "Máxima", "Mínima", "Média"],
-      datasets: [
-        {
-          backgroundColor: [
-            "#ffffff",
-            "rgba(255, 255, 255, 0.70)",
-            "rgba(255, 255, 255, 0.50)",
-            "rgba(255, 255, 255, 0.20)",
-          ],
-          data: [57, 60, 45, 55],
-          borderWidth: [0, 0, 0, 0],
-        },
-      ],
-    },
-    options: {
-      maintainAspectRatio: false,
-      legend: {
-        position: "bottom",
-        display: false,
-        labels: {
-          fontColor: "#ddd",
-          boxWidth: 15,
-        },
-      },
-      tooltips: {
-        displayColors: false,
-      },
-    },
-  });
-
-  const deepOrange = "rgb(255, 171, 145)";
-  const blue = "rgb(33, 150, 243)";
+  var myChart = new Chart(ctx, barChart);
+  console.log("before", ctx);
 
   var ctx = document.getElementById("chart1").getContext("2d");
-  var myChart = new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: [],
-      datasets: [
-        {
-          label: "Temperatura em ˚C",
-          borderColor: "rgb(41, 128, 185)",
-          hoverBackgroundColor: "rgb(0,0,0)",
-          pointHoverRadius: 10,
-          pointStyle: "rectRounded",
-          pointRadius: 5,
-          data: [],
-          tension: 0.5,
-          segment: {
-            borderColor: (ctx) =>
-              setColorLineDown(ctx, blue) || setColorLineUp(ctx, deepOrange),
-            borderDash: (ctx) => setColorLineEqual(ctx, [6, 6]),
-          },
-        },
-      ],
-    },
-    options: {
-      plugins: {
-        legend: {
-          labels: {
-            usePointStyle: true,
-          },
-        },
-      },
-      maintainAspectRatio: false,
-      legend: {
-        display: false,
-        labels: {
-          fontColor: "#ddd",
-          boxWidth: 40,
-        },
-      },
-      tooltips: {
-        displayColors: false,
-      },
-      scales: {
-        xAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-              fontColor: "#ddd",
-            },
-            gridLines: {
-              display: true,
-              color: "rgba(221, 221, 221, 0.08)",
-            },
-          },
-        ],
-        yAxes: [
-          {
-            ticks: {
-              // beginAtZero: true,
-              fontColor: "#ddd",
-              stepSize: 1,
-            },
-            gridLines: {
-              display: true,
-              color: "rgba(221, 221, 221, 0.08)",
-            },
-          },
-        ],
-      },
-    },
-  });
+  var myChart = new Chart(ctx, lineChart);
+  console.log("after", ctx);
 });
