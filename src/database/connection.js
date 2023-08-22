@@ -9,8 +9,3 @@ const connection = mysql.createPool({
 });
 
 module.exports = connection;
-
-const result = async () => {
-  const [data] = await connection.execute("SELECT * FROM temperature");
-  return data;
-};
