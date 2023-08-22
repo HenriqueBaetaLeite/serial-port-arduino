@@ -24,9 +24,13 @@ $(function () {
     document.getElementsByClassName("max-temp")[0];
   const minTemperatureParagraph =
     document.getElementsByClassName("min-temp")[0];
-  const averageTemperatureArray = [];
-  let maxTemperature = 0;
-  let minTemperature = 40;
+  const tempElements = {
+    temperatureParagraph,
+    temperatureProgressBar,
+    maxTemperatureParagraph,
+    minTemperatureParagraph,
+    temperatureAverageParagraph,
+  };
 
   // Humidity config
   const humidityParagraph = document.getElementsByClassName("humidity");
@@ -47,18 +51,7 @@ $(function () {
   const socket = io("http://localhost:3003");
 
   socket.on("ioArduino", (temperature, humidity) => {
-    const tempData = { temperature, maxTemperature, minTemperature };
-
-    const tempElements = {
-      temperatureParagraph,
-      temperatureProgressBar,
-      maxTemperatureParagraph,
-      minTemperatureParagraph,
-      averageTemperatureArray,
-      temperatureAverageParagraph,
-    };
-
-    renderTemperatureConfig(tempData, tempElements);
+    renderTemperatureConfig(Number(temperature), tempElements);
 
     const { maxHumidity, minHumidity, averageHumidity } = renderHumidityConfig(
       Number(humidity),
@@ -81,7 +74,6 @@ $(function () {
       myLineChart.data.labels.shift();
       myLineChart.data.datasets[0].data.shift();
     }
-
     myLineChart.update();
   });
 });
