@@ -1,9 +1,3 @@
-function calculateAverage(data) {
-  return (
-    data.reduce((element, total) => element + total, 0) / data.length
-  ).toFixed(2);
-}
-
 $(function () {
   "use strict";
 
@@ -25,9 +19,10 @@ $(function () {
   // Humidity config
   const humidityParagraph = document.getElementsByClassName("humidity");
   const humidityAverageParagraph = document.getElementById("averageHumidity");
-  const humidityProgressBar = document.getElementsByClassName("bar-humidity")[0];
+  const humidityProgressBar =
+    document.getElementsByClassName("bar-humidity")[0];
   const maxHumidityParagraph = document.getElementsByClassName("max-hum")[0];
-  const minHumidityParagraph = document.getElementsByClassName("min-hum")[0]; 
+  const minHumidityParagraph = document.getElementsByClassName("min-hum")[0];
   const averageHumidityArray = [];
   let maxHumidity = 0;
   let minHumidity = 100;
@@ -53,7 +48,7 @@ $(function () {
       ((Number(maxTemperature) + Number(minTemperature)) / 2).toFixed(2) + "˚C";
 
     humidityAverageParagraph.innerText =
-      ((Number(maxHumidity) + Number(minHumidity)) / 2).toFixed(2)  + "%";
+      ((Number(maxHumidity) + Number(minHumidity)) / 2).toFixed(2) + "%";
 
     if (humidity > maxHumidity) {
       maxHumidity = humidity;
