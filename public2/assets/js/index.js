@@ -7,6 +7,12 @@ import { renderHumidityConfig } from "./utils/humidityConfig.js";
 $(function () {
   "use strict";
 
+  const ctx2 = document.getElementById("chart2").getContext("2d");
+  const myBarChart = new Chart(ctx2, barChart);
+
+  const ctx = document.getElementById("chart1").getContext("2d");
+  const myLineChart = new Chart(ctx, lineChart);
+
   // Temperature config
   const temperatureParagraph =
     document.getElementsByClassName("temperature")[0];
@@ -24,65 +30,58 @@ $(function () {
 
   // Humidity config
   const humidityParagraph = document.getElementsByClassName("humidity");
-  const humidityAverageParagraph = document.getElementById("averageHumidity");
   const humidityProgressBar =
     document.getElementsByClassName("bar-humidity")[0];
   const maxHumidityParagraph = document.getElementsByClassName("max-hum")[0];
   const minHumidityParagraph = document.getElementsByClassName("min-hum")[0];
-  const averageHumidityArray = [];
-  let maxHumidity = 0;
-  let minHumidity = 100;
+  const avgHumidityParagraph = document.getElementById("averageHumidity");
+  const humElements = {
+    humidityParagraph,
+    humidityProgressBar,
+    maxHumidityParagraph,
+    minHumidityParagraph,
+    avgHumidityParagraph,
+  };
 
+  // Socket config
   const socket = io("http://localhost:3003");
 
   socket.on("ioArduino", (temperature, humidity) => {
     const tempData = { temperature, maxTemperature, minTemperature };
+
     const tempElements = {
       temperatureParagraph,
       temperatureProgressBar,
-      averageTemperatureArray,
-      temperatureAverageParagraph,
       maxTemperatureParagraph,
       minTemperatureParagraph,
+      averageTemperatureArray,
+      temperatureAverageParagraph,
     };
 
     renderTemperatureConfig(tempData, tempElements);
 
-    const humData = {
-      humidity,
+    const { maxHumidity, minHumidity, averageHumidity } = renderHumidityConfig(
+      Number(humidity),
+      humElements
+    );
+
+    myBarChart.data.datasets[0].data = [
+      Number(humidity),
       maxHumidity,
       minHumidity,
-    };
+      averageHumidity,
+    ];
+    myBarChart.update();
 
-    const humElements = {
-      humidityParagraph,
-      humidityProgressBar,
-      averageHumidityArray,
-      humidityAverageParagraph,
-      maxHumidityParagraph,
-      minHumidityParagraph,
-    };
+    const localTime = new Date().toLocaleTimeString();
+    myLineChart.data.labels.push(localTime);
+    myLineChart.data.datasets[0].data.push(+temperature);
 
-    renderHumidityConfig(humData, humElements);
-
-    const time = new Date().toLocaleTimeString();
-
-    myChart.data.labels.push(time);
-    myChart.data.datasets[0].data.push(+temperature);
-
-    if (myChart.data.datasets[0].data.length >= 9) {
-      myChart.data.labels.shift();
-      myChart.data.datasets[0].data.shift();
+    if (myLineChart.data.datasets[0].data.length >= 9) {
+      myLineChart.data.labels.shift();
+      myLineChart.data.datasets[0].data.shift();
     }
 
-    myChart.update();
+    myLineChart.update();
   });
-
-  var ctx = document.getElementById("chart2").getContext("2d");
-  var myChart = new Chart(ctx, barChart);
-  console.log("before", ctx);
-
-  var ctx = document.getElementById("chart1").getContext("2d");
-  var myChart = new Chart(ctx, lineChart);
-  console.log("after", ctx);
 });
