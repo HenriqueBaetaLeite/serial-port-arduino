@@ -2,6 +2,7 @@ import { barChart } from "./utils/barChartConfig.js";
 import { lineChart } from "./utils/lineChartConfig.js";
 
 import { renderTemperatureConfig } from "./utils/temperatureConfig.js";
+import { renderHumidityConfig } from "./utils/humidityConfig.js";
 
 $(function () {
   "use strict";
@@ -47,26 +48,22 @@ $(function () {
 
     renderTemperatureConfig(tempData, tempElements);
 
-    for (let paragraph of humidityParagraph) {
-      paragraph.innerText = humidity + "%";
-    }
+    const humData = {
+      humidity,
+      maxHumidity,
+      minHumidity,
+    };
 
-    humidityProgressBar.style.width = humidity + "%";
+    const humElements = {
+      humidityParagraph,
+      humidityProgressBar,
+      averageHumidityArray,
+      humidityAverageParagraph,
+      maxHumidityParagraph,
+      minHumidityParagraph,
+    };
 
-    averageHumidityArray.push(+humidity);
-
-    humidityAverageParagraph.innerText =
-      ((Number(maxHumidity) + Number(minHumidity)) / 2).toFixed(2) + "%";
-
-    if (humidity > maxHumidity) {
-      maxHumidity = humidity;
-    }
-    if (humidity < minHumidity) {
-      minHumidity = humidity;
-    }
-
-    maxHumidityParagraph.innerHTML = maxHumidity + "%";
-    minHumidityParagraph.innerHTML = minHumidity + "%";
+    renderHumidityConfig(humData, humElements);
 
     const time = new Date().toLocaleTimeString();
 
