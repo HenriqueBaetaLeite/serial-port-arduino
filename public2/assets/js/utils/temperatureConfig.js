@@ -5,9 +5,9 @@ export const renderTemperatureConfig = (temperature, elements) => {
   const {
     temperatureParagraph,
     temperatureProgressBar,
-    temperatureAverageParagraph,
     maxTemperatureParagraph,
     minTemperatureParagraph,
+    avgTemperatureParagraph,
   } = elements;
 
   temperatureParagraph.innerText = temperature + "˚C";
@@ -21,11 +21,11 @@ export const renderTemperatureConfig = (temperature, elements) => {
     minTemperature = temperature;
   }
 
-  const avgTemperature = (maxTemperature + minTemperature) / 2;
-  
+  const avgTemperature = ((maxTemperature + minTemperature) / 2).toFixed(1);
+
   maxTemperatureParagraph.innerHTML = maxTemperature + "˚C";
 
   minTemperatureParagraph.innerHTML = minTemperature + "˚C";
 
-  temperatureAverageParagraph.innerHTML = avgTemperature + "˚C";
+  avgTemperatureParagraph.innerHTML = avgTemperature + "˚C";
 };

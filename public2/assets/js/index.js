@@ -14,28 +14,22 @@ $(function () {
   const myLineChart = new Chart(ctx, lineChart);
 
   // Temperature config
-  const temperatureParagraph =
-    document.getElementsByClassName("temperature")[0];
-  const temperatureAverageParagraph =
-    document.getElementById("averageTemperature");
-  const temperatureProgressBar =
-    document.getElementsByClassName("bar-temperature")[0];
-  const maxTemperatureParagraph =
-    document.getElementsByClassName("max-temp")[0];
-  const minTemperatureParagraph =
-    document.getElementsByClassName("min-temp")[0];
+  const temperatureParagraph = document.getElementsByClassName("temperature")[0];
+    const temperatureProgressBar = document.getElementsByClassName("bar-temperature")[0];
+    const maxTemperatureParagraph = document.getElementsByClassName("max-temp")[0];
+    const minTemperatureParagraph = document.getElementsByClassName("min-temp")[0];
+    const avgTemperatureParagraph = document.getElementById("averageTemperature");
   const tempElements = {
     temperatureParagraph,
     temperatureProgressBar,
     maxTemperatureParagraph,
     minTemperatureParagraph,
-    temperatureAverageParagraph,
+    avgTemperatureParagraph,
   };
 
   // Humidity config
   const humidityParagraph = document.getElementsByClassName("humidity");
-  const humidityProgressBar =
-    document.getElementsByClassName("bar-humidity")[0];
+  const humidityProgressBar = document.getElementsByClassName("bar-humidity")[0];
   const maxHumidityParagraph = document.getElementsByClassName("max-hum")[0];
   const minHumidityParagraph = document.getElementsByClassName("min-hum")[0];
   const avgHumidityParagraph = document.getElementById("averageHumidity");
