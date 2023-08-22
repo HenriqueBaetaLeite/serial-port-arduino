@@ -69,7 +69,7 @@ $(function () {
     minHumidityParagraph.innerHTML = minHumidity + "%";
 
     const time = new Date().toLocaleTimeString();
-    
+
     myChart.data.labels.push(time);
     myChart.data.datasets[0].data.push(+temperature);
 
@@ -81,8 +81,8 @@ $(function () {
     myChart.update();
   });
 
-  let ctx = document.getElementById("chart2").getContext("2d");
-  let myChart = new Chart(ctx, {
+  var ctx = document.getElementById("chart2").getContext("2d");
+  var myChart = new Chart(ctx, {
     type: "bar",
     data: {
       labels: ["Atual", "Máxima", "Mínima", "Média"],
@@ -94,7 +94,7 @@ $(function () {
             "rgba(255, 255, 255, 0.50)",
             "rgba(255, 255, 255, 0.20)",
           ],
-          data: [57, 92, 35, 55],
+          data: [57, 60, 45, 55],
           borderWidth: [0, 0, 0, 0],
         },
       ],
@@ -118,8 +118,8 @@ $(function () {
   const deepOrange = "rgb(255, 171, 145)";
   const blue = "rgb(33, 150, 243)";
 
-  let ctx = document.getElementById("chart1").getContext("2d");
-  let myChart = new Chart(ctx, {
+  var ctx = document.getElementById("chart1").getContext("2d");
+  var myChart = new Chart(ctx, {
     type: "line",
     data: {
       labels: [],
