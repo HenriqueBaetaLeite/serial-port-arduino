@@ -23,7 +23,7 @@
       rel="stylesheet"
     />
     <!-- simplebar CSS-->
-    <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+    <!-- <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" /> -->
     <!-- Bootstrap core CSS-->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <!-- animate CSS-->
@@ -31,7 +31,7 @@
     <!-- Icons CSS-->
     <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
     <!-- Sidebar CSS-->
-    <link href="assets/css/sidebar-menu.css" rel="stylesheet" />
+    <!-- <link href="assets/css/sidebar-menu.css" rel="stylesheet" /> -->
     <!-- Custom Style-->
     <link href="assets/css/app-style.css" rel="stylesheet" />
   </head>
@@ -39,20 +39,15 @@
   <body class="bg-theme bg-theme2">
     <!-- Start wrapper-->
     <div id="wrapper">
-     
-
-    
-
       <div class="clearfix"></div>
 
-      <div> 
+      <div>
         <div class="container-fluid">
           <!--Start Dashboard Content-->
 
           <div class="card mt-3">
             <div class="card-content">
               <div class="row row-group m-0">
-
                 <div class="col-12 col-lg-6 col-xl-6 border-light">
                   <div class="card-body">
                     <h5 class="text-white mb-0">
@@ -61,7 +56,10 @@
                       ></span>
                     </h5>
                     <div class="progress my-3" style="height: 3px">
-                      <div class="progress-bar bar-temperature" style="width: 80%"></div>
+                      <div
+                        class="progress-bar bar-temperature"
+                        style="width: 80%"
+                      ></div>
                     </div>
                     <p class="mb-0 text-white">
                       Temperatura Atual<span class="float-right temperature"
@@ -70,7 +68,6 @@
                     </p>
                   </div>
                 </div>
-
 
                 <!-- <div class="col-12 col-lg-6 col-xl-3 border-light">
                   <div class="card-body">
@@ -95,7 +92,11 @@
                       <span class="float"><i class="fa fa-tint"></i></span>
                     </h5>
                     <div class="progress my-3" style="height: 3px">
-                      <div class="progress-bar bar-humidity" id="bar" style="width: 100%"></div>
+                      <div
+                        class="progress-bar bar-humidity"
+                        id="bar"
+                        style="width: 100%"
+                      ></div>
                     </div>
                     <p class="mb-0 text-white">
                       Umidade Atual<span class="float-right humidity"
@@ -123,7 +124,6 @@
                     </p>
                   </div>
                 </div> -->
-
               </div>
             </div>
           </div>
@@ -134,7 +134,9 @@
                 <div class="card-header">
                   Gráfico da Temperatura atual
                   <div class="card-action">
-                    <span class="float-right"><i class="fa fa-line-chart"></i></span>
+                    <span class="float-right"
+                      ><i class="fa fa-line-chart"></i
+                    ></span>
                   </div>
                 </div>
                 <div class="card-body">
@@ -143,8 +145,9 @@
                   </div>
                 </div>
 
-                <div class="row m-0 row-group text-center border-top border-light-3">
-
+                <div
+                  class="row m-0 row-group text-center border-top border-light-3"
+                >
                   <div class="col-12 col-lg-4">
                     <div class="p-3">
                       <h5 class="mb-0 min-temp">
@@ -152,7 +155,8 @@
                           <i class="fa fa-spinner fa-pulse"></i>
                         </span>
                       </h5>
-                      <small class="mb-0">Temperatura mínima
+                      <small class="mb-0"
+                        >Temperatura mínima
                         <span>
                           <i class="fa fa-arrow-down"></i>
                         </span>
@@ -167,7 +171,8 @@
                           <i class="fa fa-spinner fa-pulse"></i>
                         </span>
                       </h5>
-                      <small class="mb-0">Temperatura máxima
+                      <small class="mb-0"
+                        >Temperatura máxima
                         <span>
                           <i class="fa fa-arrow-up"></i>
                         </span>
@@ -175,21 +180,21 @@
                     </div>
                   </div>
 
-                    <div class="col-12 col-lg-4">
+                  <div class="col-12 col-lg-4">
                     <div class="p-3">
                       <h5 class="mb-0 max-temp" id="averageTemperature">
                         <span>
                           <i class="fa fa-spinner fa-pulse"></i>
                         </span>
                       </h5>
-                      <small class="mb-0">Temperatura média
+                      <small class="mb-0"
+                        >Temperatura média
                         <span>
                           <i class="fa fa-balance-scale"></i>
                         </span>
                       </small>
                     </div>
                   </div>
-                  
                 </div>
               </div>
             </div>
@@ -198,8 +203,7 @@
               <div class="card">
                 <div class="card-header">
                   Relatório de Umidade
-                  <div class="card-action">
-                  </div>
+                  <div class="card-action"></div>
                 </div>
                 <div class="card-body">
                   <div class="chart-container-2">
@@ -211,28 +215,36 @@
                     <tbody>
                       <tr>
                         <td>
-                          <i class="fa fa-circle text-white mr-2"></i> Umidade Atual
+                          <i class="fa fa-circle text-white mr-2"></i> Umidade
+                          Atual
                         </td>
-                        <td>$5856</td>
+                        <td class="humidity">
+                          <i class="fa fa-spinner fa-pulse"></i>
+                        </td>
                       </tr>
                       <tr>
                         <td>
-                          <i class="fa fa-circle text-light-1 mr-2"></i
-                          >Máxima
+                          <i class="fa fa-circle text-light-1 mr-2"></i>Máxima
                         </td>
-                        <td>$2602</td>
+                        <td class="max-hum">
+                          <i class="fa fa-spinner fa-pulse"></i>
+                        </td>
                       </tr>
                       <tr>
                         <td>
                           <i class="fa fa-circle text-light-2 mr-2"></i>Mínima
                         </td>
-                        <td>$1802</td>
+                        <td class="min-hum">
+                          <i class="fa fa-spinner fa-pulse"></i>
+                        </td>
                       </tr>
                       <tr>
                         <td>
                           <i class="fa fa-circle text-light-3 mr-2"></i>Média
                         </td>
-                        <td>$1105</td>
+                        <td id="averageHumidity">
+                          <i class="fa fa-spinner fa-pulse"></i>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -244,10 +256,10 @@
 
           <!--End Dashboard Content-->
           <!--start overlay-->
-          <div class="overlay toggle-menu"></div>
+          <!-- <div class="overlay toggle-menu"></div> -->
           <!--end overlay-->
         </div>
-        
+
         <!-- End container-fluid-->
       </div>
       <!--End content-wrapper-->
@@ -258,13 +270,12 @@
       <!--End Back To Top Button-->
 
       <!--Start footer-->
-      <footer class="footer">
+      <!-- <footer class="footer">
         <div class="container">
           <div class="text-center"> Arduino Climate App | Copyright © 2018 Dashtreme Admin</div>
         </div>
-      </footer>
+      </footer> -->
       <!--End footer-->
-     
     </div>
     <!--End wrapper-->
 
@@ -274,7 +285,7 @@
     <script src="assets/js/bootstrap.min.js"></script>
 
     <!-- simplebar js -->
-    <script src="assets/plugins/simplebar/js/simplebar.js"></script>
+    <!-- <script src="assets/plugins/simplebar/js/simplebar.js"></script> -->
     <!-- sidebar-menu js -->
     <script src="assets/js/sidebar-menu.js"></script>
     <!-- loader scripts -->

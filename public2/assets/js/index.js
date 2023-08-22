@@ -19,15 +19,18 @@ $(function () {
   const minTemperatureParagraph =
     document.getElementsByClassName("min-temp")[0];
   const averageTemperatureArray = [];
-
-  // Humidity config
-  const humidityParagraph = document.getElementsByClassName("humidity")[0];
-  const humidityAverageParagraph = document.getElementById("averageHumidity");
-  const humidityProgressBar =
-    document.getElementsByClassName("bar-humidity")[0];
-  const averageHumidityArray = [];
   let maxTemperature = 0;
   let minTemperature = 40;
+
+  // Humidity config
+  const humidityParagraph = document.getElementsByClassName("humidity");
+  const humidityAverageParagraph = document.getElementById("averageHumidity");
+  const humidityProgressBar = document.getElementsByClassName("bar-humidity")[0];
+  const maxHumidityParagraph = document.getElementsByClassName("max-hum")[0];
+  const minHumidityParagraph = document.getElementsByClassName("min-hum")[0]; 
+  const averageHumidityArray = [];
+  let maxHumidity = 0;
+  let minHumidity = 100;
 
   const socket = io("http://localhost:3003");
 
@@ -35,7 +38,12 @@ $(function () {
     temperatureParagraph.innerText = temperature + "˚C";
     temperatureProgressBar.style.width = temperature + "%";
 
-    humidityParagraph.innerText = humidity + "%";
+    for (let index = 0; index < humidityParagraph.length; index++) {
+      const paragraph = humidityParagraph[index];
+
+      paragraph.innerText = humidity + "%";
+    }
+
     humidityProgressBar.style.width = humidity + "%";
 
     averageTemperatureArray.push(+temperature);
@@ -44,8 +52,15 @@ $(function () {
     temperatureAverageParagraph.innerHTML =
       ((Number(maxTemperature) + Number(minTemperature)) / 2).toFixed(2) + "˚C";
 
-    // humidityAverageParagraph.innerText =
-    //   calculateAverage(averageHumidityArray) + "%";
+    humidityAverageParagraph.innerText =
+      ((Number(maxHumidity) + Number(minHumidity)) / 2).toFixed(2)  + "%";
+
+    if (humidity > maxHumidity) {
+      maxHumidity = humidity;
+    }
+    if (humidity < minHumidity) {
+      minHumidity = humidity;
+    }
 
     if (temperature > maxTemperature) {
       maxTemperature = temperature;
@@ -56,6 +71,9 @@ $(function () {
 
     maxTemperatureParagraph.innerHTML = maxTemperature + "˚C";
     minTemperatureParagraph.innerHTML = minTemperature + "˚C";
+
+    maxHumidityParagraph.innerHTML = maxHumidity + "%";
+    minHumidityParagraph.innerHTML = minHumidity + "%";
 
     const time = new Date().toLocaleTimeString();
     myChart.data.labels.push(time);
@@ -73,7 +91,7 @@ $(function () {
   var myChart = new Chart(ctx, {
     type: "bar",
     data: {
-      labels: ["Direct", "Affiliate", "E-mail", "Other"],
+      labels: ["Atual", "Máxima", "Mínima", "Média"],
       datasets: [
         {
           backgroundColor: [
