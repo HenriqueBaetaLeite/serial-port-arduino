@@ -4,6 +4,8 @@ const { Server } = require("socket.io");
 const path = require("path");
 const parser = require("./serialPortConfig");
 
+const dataService = require("./service/serviceData");
+
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer);
@@ -18,6 +20,9 @@ io.on("connection", (socket) => {
 
   parser.on("data", (data) => {
     const [temperature, humidity] = data.split("|");
+
+    const temperatureData = dataService(Number(temperature));
+    const humidityData = dataService(Number(humidity));
 
     socket.emit("ioArduino", temperature, humidity);
   });
