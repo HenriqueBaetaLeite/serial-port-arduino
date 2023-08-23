@@ -14,11 +14,15 @@ $(function () {
   const myLineChart = new Chart(ctx, lineChart);
 
   // Temperature config
-  const temperatureParagraph = document.getElementsByClassName("temperature")[0];
-    const temperatureProgressBar = document.getElementsByClassName("bar-temperature")[0];
-    const maxTemperatureParagraph = document.getElementsByClassName("max-temp")[0];
-    const minTemperatureParagraph = document.getElementsByClassName("min-temp")[0];
-    const avgTemperatureParagraph = document.getElementById("averageTemperature");
+  const temperatureParagraph =
+    document.getElementsByClassName("temperature")[0];
+  const temperatureProgressBar =
+    document.getElementsByClassName("bar-temperature")[0];
+  const maxTemperatureParagraph =
+    document.getElementsByClassName("max-temp")[0];
+  const minTemperatureParagraph =
+    document.getElementsByClassName("min-temp")[0];
+  const avgTemperatureParagraph = document.getElementById("averageTemperature");
   const tempElements = {
     temperatureParagraph,
     temperatureProgressBar,
@@ -29,7 +33,8 @@ $(function () {
 
   // Humidity config
   const humidityParagraph = document.getElementsByClassName("humidity");
-  const humidityProgressBar = document.getElementsByClassName("bar-humidity")[0];
+  const humidityProgressBar =
+    document.getElementsByClassName("bar-humidity")[0];
   const maxHumidityParagraph = document.getElementsByClassName("max-hum")[0];
   const minHumidityParagraph = document.getElementsByClassName("min-hum")[0];
   const avgHumidityParagraph = document.getElementById("averageHumidity");
@@ -44,7 +49,9 @@ $(function () {
   // Socket config
   const socket = io("http://localhost:3003");
 
-  socket.on("ioArduino", (temperature, humidity) => {
+  socket.on("ioArduino", (temperature, humidity, temperatureResults) => {
+    console.log(temperatureResults);
+
     renderTemperatureConfig(Number(temperature), tempElements);
 
     const { maxHumidity, minHumidity, averageHumidity } = renderHumidityConfig(
@@ -62,7 +69,7 @@ $(function () {
 
     const localTime = new Date().toLocaleTimeString();
     myLineChart.data.labels.push(localTime);
-    myLineChart.data.datasets[0].data.push(+temperature);
+    myLineChart.data.datasets[0].data.push(Number(temperature));
 
     if (myLineChart.data.datasets[0].data.length >= 9) {
       myLineChart.data.labels.shift();
