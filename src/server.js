@@ -18,29 +18,12 @@ app.use(express.static(publicPath));
 io.on("connection", (socket) => {
   console.log("Client socket connected:", socket.id);
 
-  let maxTemperature = 0;
-  let minTemperature = 40;
-
-  let maxHumidity = 0;
-  let minHumidity = 100;
-
   parser.on("data", (data) => {
     const [temperature, humidity] = data.split("|");
 
-    const temperatureData = {
-      data: Number(temperature),
-      maxData: Number(maxTemperature),
-      minData: Number(minTemperature),
-    };
+    // const temperatureResults = generateDataResults(Number(temperature));
 
-    // const temperatureResults = generateDataResults(temperatureData);
-
-    const humidityData = {
-      data: Number(humidity),
-      maxData: Number(maxHumidity),
-      minData: Number(minHumidity),
-    };
-    const humidityResults = generateDataResults(humidityData);
+    const humidityResults = generateDataResults(Number(humidity));
 
     console.log("server", humidityResults);
 

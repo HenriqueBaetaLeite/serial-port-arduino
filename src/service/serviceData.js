@@ -1,11 +1,13 @@
-const generateDataResults = (originalData) => {
-  let { data, maxData, minData } = originalData;
+let maxData = 0;
+let minData = 100;
 
-  if (data > maxData) {
-    maxData = data;
+const generateDataResults = (originalData) => {
+  
+  if (originalData > maxData) {
+    maxData = originalData;
   }
-  if (data < minData) {
-    minData = data;
+  if (originalData < minData) {
+    minData = originalData;
   }
   const averageData = Number(((maxData + minData) / 2).toFixed(1));
   

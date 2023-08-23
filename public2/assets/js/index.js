@@ -49,8 +49,8 @@ $(function () {
   // Socket config
   const socket = io("http://localhost:3003");
 
-  socket.on("ioArduino", (temperature, humidity, temperatureResults) => {
-    console.log(temperatureResults);
+  socket.on("ioArduino", (temperature, humidity, humidityResults) => {
+    console.log(humidityResults);
 
     renderTemperatureConfig(Number(temperature), tempElements);
 
