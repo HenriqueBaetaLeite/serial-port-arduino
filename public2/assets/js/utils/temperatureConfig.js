@@ -1,7 +1,6 @@
-let maxTemperature = 0;
-let minTemperature = 40;
-
-export const renderTemperatureConfig = (temperature, elements) => {
+// export const renderTemperatureConfig = (temperature, elements) => {
+export const renderTemperatureConfig = (temperatureData, elements) => {
+  const { originalData, max, min, averageData } = temperatureData;
   const {
     temperatureParagraph,
     temperatureProgressBar,
@@ -10,22 +9,15 @@ export const renderTemperatureConfig = (temperature, elements) => {
     avgTemperatureParagraph,
   } = elements;
 
-  temperatureParagraph.innerText = temperature + "˚C";
+  temperatureParagraph.innerText = originalData + "˚C";
 
-  temperatureProgressBar.style.width = temperature + "%";
+  temperatureProgressBar.style.width = originalData + "%";
 
-  if (temperature > maxTemperature) {
-    maxTemperature = temperature;
-  }
-  if (temperature < minTemperature) {
-    minTemperature = temperature;
-  }
+  maxTemperatureParagraph.innerHTML = max + "˚C";
 
-  const avgTemperature = ((maxTemperature + minTemperature) / 2).toFixed(1);
+  minTemperatureParagraph.innerHTML = min + "˚C";
 
-  maxTemperatureParagraph.innerHTML = maxTemperature + "˚C";
+  avgTemperatureParagraph.innerHTML = averageData + "˚C";
 
-  minTemperatureParagraph.innerHTML = minTemperature + "˚C";
-
-  avgTemperatureParagraph.innerHTML = avgTemperature + "˚C";
+  return { max, min, averageData, originalData };
 };

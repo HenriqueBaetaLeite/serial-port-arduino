@@ -1,17 +1,31 @@
-let maxData = 0;
-let minData = 100;
+const humidityConfig = {
+  max: 0,
+  min: 100,
+};
 
-const generateDataResults = (originalData) => {
-  
-  if (originalData > maxData) {
-    maxData = originalData;
+const temperatureConfig = {
+  max: 0,
+  min: 45,
+};
+
+const configObject = {
+  temperature: temperatureConfig,
+  humidity: humidityConfig,
+};
+
+const generateDataResults = (type, originalData) => {
+  if (originalData > configObject[type].max) {
+    configObject[type].max = originalData;
   }
-  if (originalData < minData) {
-    minData = originalData;
+  if (originalData < configObject[type].min) {
+    configObject[type].min = originalData;
   }
-  const averageData = Number(((maxData + minData) / 2).toFixed(1));
-  
-  return { maxData, minData, averageData };
+
+  const averageData = Number(
+    ((configObject[type].max + configObject[type].min) / 2).toFixed(1)
+  );
+
+  return { ...configObject[type], averageData, originalData };
 };
 
 module.exports = generateDataResults;

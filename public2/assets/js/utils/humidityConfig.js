@@ -1,7 +1,5 @@
-let maxHumidity = 0;
-let minHumidity = 100;
-
-export const renderHumidityConfig = (humidity, elements) => {
+export const renderHumidityConfig = (humidityData, elements) => {
+  const { originalData, max, min, averageData } = humidityData;
   const {
     humidityParagraph,
     humidityProgressBar,
@@ -11,23 +9,13 @@ export const renderHumidityConfig = (humidity, elements) => {
   } = elements;
 
   for (let paragraph of humidityParagraph) {
-    paragraph.innerText = humidity + "%";
+    paragraph.innerText = originalData + "%";
   }
 
-  humidityProgressBar.style.width = humidity + "%";
+  humidityProgressBar.style.width = originalData + "%";
+  maxHumidityParagraph.innerHTML = max + "%";
+  minHumidityParagraph.innerHTML = min + "%";
+  avgHumidityParagraph.innerText = averageData + "%";
 
-  if (humidity > maxHumidity) {
-    maxHumidity = humidity;
-  }
-  if (humidity < minHumidity) {
-    minHumidity = humidity;
-  }
-
-  const averageHumidity = (maxHumidity + minHumidity) / 2;
-
-  maxHumidityParagraph.innerHTML = maxHumidity + "%";
-  minHumidityParagraph.innerHTML = minHumidity + "%";
-  avgHumidityParagraph.innerText = averageHumidity + "%";
-
-  return { maxHumidity, minHumidity, averageHumidity };
+  return { max, min, averageData, originalData };
 };

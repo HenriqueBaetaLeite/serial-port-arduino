@@ -8,10 +8,10 @@ $(function () {
   "use strict";
 
   const ctx2 = document.getElementById("chart2").getContext("2d");
-  const myBarChart = new Chart(ctx2, barChart);
+  const humidityBarChart = new Chart(ctx2, barChart);
 
   const ctx = document.getElementById("chart1").getContext("2d");
-  const myLineChart = new Chart(ctx, lineChart);
+  const temperatureLineChart = new Chart(ctx, lineChart);
 
   // Temperature config
   const temperatureParagraph =
@@ -49,32 +49,35 @@ $(function () {
   // Socket config
   const socket = io("http://localhost:3003");
 
-  socket.on("ioArduino", (temperature, humidity, humidityResults) => {
-    console.log(humidityResults);
-
-    renderTemperatureConfig(Number(temperature), tempElements);
-
-    const { maxHumidity, minHumidity, averageHumidity } = renderHumidityConfig(
-      Number(humidity),
-      humElements
+  socket.on("ioArduino", (temperatureResults, humidityResults) => {
+    const { originalData: temperature } = renderTemperatureConfig(
+      temperatureResults,
+      tempElements
     );
 
-    myBarChart.data.datasets[0].data = [
-      Number(humidity),
-      maxHumidity,
+    const {
+      max: maxHumidty,
+      min: minHumidity,
+      averageData: avgHumidity,
+      originalData: humidity,
+    } = renderHumidityConfig(humidityResults, humElements);
+
+    humidityBarChart.data.datasets[0].data = [
+      humidity,
+      maxHumidty,
       minHumidity,
-      averageHumidity,
+      avgHumidity,
     ];
-    myBarChart.update();
+    humidityBarChart.update();
 
     const localTime = new Date().toLocaleTimeString();
-    myLineChart.data.labels.push(localTime);
-    myLineChart.data.datasets[0].data.push(Number(temperature));
+    temperatureLineChart.data.labels.push(localTime);
+    temperatureLineChart.data.datasets[0].data.push(temperature);
 
-    if (myLineChart.data.datasets[0].data.length >= 9) {
-      myLineChart.data.labels.shift();
-      myLineChart.data.datasets[0].data.shift();
+    if (temperatureLineChart.data.datasets[0].data.length >= 9) {
+      temperatureLineChart.data.labels.shift();
+      temperatureLineChart.data.datasets[0].data.shift();
     }
-    myLineChart.update();
+    temperatureLineChart.update();
   });
 });
