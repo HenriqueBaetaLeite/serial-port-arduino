@@ -1,4 +1,4 @@
-export const barChart =  {
+export const barChart = {
   type: "bar",
   data: {
     labels: ["Atual", "Máxima", "Mínima", "Média"],
@@ -16,6 +16,16 @@ export const barChart =  {
     ],
   },
   options: {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
+
     maintainAspectRatio: false,
     legend: {
       position: "bottom",
