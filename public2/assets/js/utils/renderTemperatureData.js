@@ -1,5 +1,5 @@
 // export const renderTemperatureConfig = (temperature, elements) => {
-export const renderTemperatureConfig = (temperatureData, elements) => {
+export const renderTemperatureData = (temperatureData, elements) => {
   const { originalData, max, min, averageData } = temperatureData;
   const {
     temperatureParagraph,

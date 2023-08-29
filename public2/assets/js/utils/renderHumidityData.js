@@ -1,4 +1,4 @@
-export const renderHumidityConfig = (humidityData, elements) => {
+export const renderHumidityData = (humidityData, elements) => {
   const { originalData, max, min, averageData } = humidityData;
   const {
     humidityParagraph,

@@ -1,8 +1,8 @@
 import { barChart } from "./utils/barChartConfig.js";
 import { lineChart } from "./utils/lineChartConfig.js";
 
-import { renderTemperatureConfig } from "./utils/temperatureConfig.js";
-import { renderHumidityConfig } from "./utils/humidityConfig.js";
+import { renderTemperatureData } from "./utils/renderTemperatureData.js";
+import { renderHumidityData } from "./utils/renderHumidityData.js";
 
 $(function () {
   "use strict";
@@ -50,7 +50,7 @@ $(function () {
   const socket = io("http://localhost:3003");
 
   socket.on("ioArduino", (temperatureResults, humidityResults) => {
-    const { originalData: temperature } = renderTemperatureConfig(
+    const { originalData: temperature } = renderTemperatureData(
       temperatureResults,
       tempElements
     );
@@ -60,7 +60,7 @@ $(function () {
       min: minHumidity,
       averageData: avgHumidity,
       originalData: humidity,
-    } = renderHumidityConfig(humidityResults, humElements);
+    } = renderHumidityData(humidityResults, humElements);
 
     humidityBarChart.data.datasets[0].data = [
       humidity,
