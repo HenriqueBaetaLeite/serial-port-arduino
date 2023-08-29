@@ -4,7 +4,7 @@ const { Server } = require("socket.io");
 const path = require("path");
 const parser = require("./serialPortConfig");
 
-const generateDataResults = require("./service/serviceData");
+const generateDataResults = require("./service/generateDataResults");
 
 const app = express();
 const httpServer = createServer(app);
