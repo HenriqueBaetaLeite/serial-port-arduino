@@ -4,9 +4,8 @@ import { lineChart } from "./utils/lineChartConfig.js";
 import { renderTemperatureData } from "./utils/renderTemperatureData.js";
 import { renderHumidityData } from "./utils/renderHumidityData.js";
 
-import temperatureElements from './utils/temperatureElements.js';
-import humidityElements from './utils/humidityElements.js';
-
+import temperatureElements from "./utils/temperatureElements.js";
+import humidityElements from "./utils/humidityElements.js";
 
 $(function () {
   "use strict";
@@ -16,8 +15,7 @@ $(function () {
 
   const ctx = document.getElementById("chart1").getContext("2d");
   const temperatureLineChart = new Chart(ctx, lineChart);
-
-  // Socket config
+  
   const socket = io("http://localhost:3003");
 
   socket.on("ioArduino", (temperatureResults, humidityResults) => {

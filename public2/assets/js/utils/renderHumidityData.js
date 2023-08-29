@@ -17,5 +17,5 @@ export const renderHumidityData = (humidityData, elements) => {
   minHumidityParagraph.innerHTML = min + "%";
   avgHumidityParagraph.innerText = averageData + "%";
 
-  return { max, min, averageData, originalData };
+  return { originalData, max, min, averageData };
 };

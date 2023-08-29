@@ -19,5 +19,5 @@ export const renderTemperatureData = (temperatureData, elements) => {
 
   avgTemperatureParagraph.innerHTML = averageData + "˚C";
 
-  return { max, min, averageData, originalData };
+  return { originalData, max, min, averageData };
 };
