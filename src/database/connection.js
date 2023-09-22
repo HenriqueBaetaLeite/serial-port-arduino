@@ -5,7 +5,7 @@ const connection = mysql.createPool({
   user: process.env.MYSQL_ROOT_USER || "root",
   password: process.env.MYSQL_ROOT_PASSWORD || "password",
   database: process.env.MYSQL_DATABASE || "temp_analyze",
-  port: 3306,
+  port: process.env.MYSQL_PORT || 3306,
 });
 
 module.exports = connection;
