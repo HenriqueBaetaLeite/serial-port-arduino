@@ -1,5 +1,7 @@
 # Aplicativo de monitoramento de temperatura e umidade
 
+<img src="./public/screenShot.png" alt="front-end example" width="250"/>
+
 Esse projeto nasceu da ideia de compartilhar meus feitos. Criei um programa em Arduino utilizando um sensor DHT11 de temperatura e umidade, onde transmito através da porta serial e usando a biblioteca serialPort recebo os dados em um servidor NodeJS. O servidor usando a biblioteca socket.io envia os dados para o cliente, que por sua vez, utiliza a biblioteca chart.js para plotar os dados em um gráfico.
 
  <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTh3OGFkOXptOTJ6aHJwbWVkOXhibTJsdG5iOXlsa3NjYmI1MWs4diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EIiJp9cQ3GeEU/giphy.gif" alt="drawing" width="150"/>
