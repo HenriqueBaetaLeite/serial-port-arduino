@@ -6,6 +6,7 @@ import { renderHumidityData } from "./utils/renderHumidityData.js";
 
 import temperatureElements from "./utils/temperatureElements.js";
 import humidityElements from "./utils/humidityElements.js";
+import updateTemperatureChart from "./utils/updateTemperatureChart.js";
 import updateHumidityChart from "./utils/updateHumidityChart.js";
 
 $(function () {
@@ -25,6 +26,8 @@ $(function () {
       temperatureElements
     );
 
+    updateTemperatureChart(temperatureLineChart, temperature);
+
     const humidityData = renderHumidityData(humidityResults, humidityElements);
     updateHumidityChart(humidityBarChart, humidityData);
 
@@ -43,14 +46,14 @@ $(function () {
     // ];
     // humidityBarChart.update();
 
-    const localTime = new Date().toLocaleTimeString();
-    temperatureLineChart.data.labels.push(localTime);
-    temperatureLineChart.data.datasets[0].data.push(temperature);
+    // const localTime = new Date().toLocaleTimeString();
+    // temperatureLineChart.data.labels.push(localTime);
+    // temperatureLineChart.data.datasets[0].data.push(temperature);
 
-    if (temperatureLineChart.data.datasets[0].data.length >= 9) {
-      temperatureLineChart.data.labels.shift();
-      temperatureLineChart.data.datasets[0].data.shift();
-    }
-    temperatureLineChart.update();
+    // if (temperatureLineChart.data.datasets[0].data.length >= 9) {
+    //   temperatureLineChart.data.labels.shift();
+    //   temperatureLineChart.data.datasets[0].data.shift();
+    // }
+    // temperatureLineChart.update();
   });
 });
