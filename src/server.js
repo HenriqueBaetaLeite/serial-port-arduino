@@ -21,10 +21,7 @@ io.on("connection", (socket) => {
   parser.on("data", (data) => {
     const [temperature, humidity] = data.split("|");
 
-    const temperatureResults = generateDataResults(
-      "temperature",
-      Number(temperature)
-    );
+    const temperatureResults = generateDataResults("temperature", Number(temperature));
 
     const humidityResults = generateDataResults("humidity", Number(humidity));
 
