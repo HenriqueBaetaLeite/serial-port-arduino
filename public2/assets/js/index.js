@@ -30,30 +30,5 @@ $(function () {
 
     const humidityData = renderHumidityData(humidityResults, humidityElements);
     updateHumidityChart(humidityBarChart, humidityData);
-
-    // const {
-    //   max: maxHumidty,
-    //   min: minHumidity,
-    //   averageData: avgHumidity,
-    //   originalData: humidity,
-    // } = renderHumidityData(humidityResults, humidityElements);
-
-    // humidityBarChart.data.datasets[0].data = [
-    //   humidity,
-    //   maxHumidty,
-    //   minHumidity,
-    //   avgHumidity,
-    // ];
-    // humidityBarChart.update();
-
-    // const localTime = new Date().toLocaleTimeString();
-    // temperatureLineChart.data.labels.push(localTime);
-    // temperatureLineChart.data.datasets[0].data.push(temperature);
-
-    // if (temperatureLineChart.data.datasets[0].data.length >= 9) {
-    //   temperatureLineChart.data.labels.shift();
-    //   temperatureLineChart.data.datasets[0].data.shift();
-    // }
-    // temperatureLineChart.update();
   });
 });
