@@ -6,6 +6,7 @@ import { renderHumidityData } from "./utils/renderHumidityData.js";
 
 import temperatureElements from "./utils/temperatureElements.js";
 import humidityElements from "./utils/humidityElements.js";
+import updateHumidityChart from "./utils/updateHumidityChart.js";
 
 $(function () {
   "use strict";
@@ -15,7 +16,7 @@ $(function () {
 
   const ctx = document.getElementById("chart1").getContext("2d");
   const temperatureLineChart = new Chart(ctx, lineChart);
-  
+
   const socket = io("http://localhost:3003");
 
   socket.on("ioArduino", (temperatureResults, humidityResults) => {
@@ -24,20 +25,23 @@ $(function () {
       temperatureElements
     );
 
-    const {
-      max: maxHumidty,
-      min: minHumidity,
-      averageData: avgHumidity,
-      originalData: humidity,
-    } = renderHumidityData(humidityResults, humidityElements);
+    const humidityData = renderHumidityData(humidityResults, humidityElements);
+    updateHumidityChart(humidityBarChart, humidityData);
 
-    humidityBarChart.data.datasets[0].data = [
-      humidity,
-      maxHumidty,
-      minHumidity,
-      avgHumidity,
-    ];
-    humidityBarChart.update();
+    // const {
+    //   max: maxHumidty,
+    //   min: minHumidity,
+    //   averageData: avgHumidity,
+    //   originalData: humidity,
+    // } = renderHumidityData(humidityResults, humidityElements);
+
+    // humidityBarChart.data.datasets[0].data = [
+    //   humidity,
+    //   maxHumidty,
+    //   minHumidity,
+    //   avgHumidity,
+    // ];
+    // humidityBarChart.update();
 
     const localTime = new Date().toLocaleTimeString();
     temperatureLineChart.data.labels.push(localTime);
