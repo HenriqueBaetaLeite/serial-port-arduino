@@ -26,7 +26,7 @@ Este é um diagrama representando as tecnologias aplicadas neste projeto.
 
 - Feche o monitor da IDE e o projeto está pronto para ser iniciado com `npm start` ou `npm run dev` em modo de desenvolvimento.
 
-- Abra o browser na url [localhost:3003](http://localhost:3003) e acompanhe em tempo real os dados de temperatura de umidade do seu ambiente.
+- Abra o browser na url [localhost:3003](http://localhost:3003) e acompanhe em tempo real os dados de temperatura e umidade do seu ambiente.
 
 ### fontes:
 https://www.chartjs.org/docs/latest/
