@@ -5,10 +5,9 @@ export const barChart = {
     datasets: [
       {
         backgroundColor: [
-          "#ffffff",
-          "rgba(255, 255, 255, 0.70)",
           "rgba(255, 255, 255, 0.50)",
-          "rgba(255, 255, 255, 0.20)",
+          "rgba(255, 255, 255, 0.70)",
+          "rgba(255, 255, 255, 0.30)",
         ],
         data: [45, 100, 55],
         borderWidth: [0, 0, 0],
