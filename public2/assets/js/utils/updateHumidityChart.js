@@ -7,9 +7,8 @@ const updateHumidityChart = (humidityBarChart, humidityData) => {
   } = humidityData;
 
   humidityBarChart.data.datasets[0].data = [
-    // humidity,
-    maxHumidty,
     minHumidity,
+    maxHumidty,
     avgHumidity,
   ];
   humidityBarChart.update();
