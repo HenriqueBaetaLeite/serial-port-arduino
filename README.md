@@ -28,7 +28,7 @@ Este é um diagrama representando as tecnologias aplicadas neste projeto.
 
 - Abra o browser na url [localhost:3003](http://localhost:3003) e acompanhe em tempo real os dados de temperatura e umidade do seu ambiente.
 
-### fontes:
+#### fontes:
 https://www.chartjs.org/docs/latest/
 
 https://serialport.io/

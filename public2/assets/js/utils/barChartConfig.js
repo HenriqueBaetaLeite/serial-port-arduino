@@ -1,7 +1,7 @@
 export const barChart = {
   type: "bar",
   data: {
-    labels: ["Atual", "Máxima", "Mínima", "Média"],
+    labels: ["Mínima", "Máxima", "Média"],
     datasets: [
       {
         backgroundColor: [
@@ -10,8 +10,8 @@ export const barChart = {
           "rgba(255, 255, 255, 0.50)",
           "rgba(255, 255, 255, 0.20)",
         ],
-        data: [57, 100, 45, 55],
-        borderWidth: [0, 0, 0, 0],
+        data: [45, 100, 55],
+        borderWidth: [0, 0, 0],
       },
     ],
   },
